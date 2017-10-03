@@ -31,5 +31,10 @@ namespace Encrypic.Views
         {
             Frame.Navigate(typeof(Views.RegisterView), null);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Views.DashboardView), null);
+        }
     }
 }
