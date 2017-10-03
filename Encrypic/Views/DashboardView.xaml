@@ -126,13 +126,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="sideBarButton" TargetType="Button" BasedOn="{StaticResource circleButtonStyle}">
+        <Style x:Key="sideBarButton" TargetType="Button" >
             <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Light"/>
             <Setter Property="Padding" Value="10"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="#7B0828"/>
+            <Setter Property="Background" Value="#d62839"/>
+            <Setter Property="Foreground" Value="#FBF5F3"/>
             <Setter Property="BorderBrush" Value="#7B0828"/>
-            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
     </Page.Resources>
 
@@ -156,10 +157,9 @@
                        Margin="0 10 0 10"/>
             </RelativePanel>
         </Border>
-        <Grid Margin=" 0 52 0 0">
+        <Grid Margin=" 0 51 0 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="55*"/>
-                <RowDefinition Height="29*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
@@ -168,14 +168,14 @@
             <StackPanel Grid.Column="0"
                         Grid.Row="0" 
                         Grid.RowSpan="2"
-                        Background="Gray">
+                        Background="#522B47">
                 <Button HorizontalAlignment="Center"
                         Style="{StaticResource sideBarButton}"
                         Grid.Column="0" 
                         Grid.Row="0"
                         Margin="5">
                     <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE80F;"/>
+                               Text="&#xE8BD;"/>
                 </Button>
                 <Button HorizontalAlignment="Center"
                         Style="{StaticResource sideBarButton}"
@@ -193,7 +193,83 @@
                     <TextBlock FontFamily="Segoe MDL2 Assets" 
                                Text="&#xE713;" />
                 </Button>
+                <Button HorizontalAlignment="Center"
+                        Style="{StaticResource sideBarButton}"
+                        Grid.Column="2" 
+                        Grid.Row="0"
+                        Margin="5">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" 
+                               Text="&#xE7E8;" />
+                </Button>
             </StackPanel>
+            <Grid Grid.Column="1"
+                        Background="White">
+                <ListView x:Name="colorsListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:NamedColor">
+                            <Grid Margin="0 10 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="54"/>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Height="60" Width="60" Source="../Assets/epsmlogo.png" Grid.RowSpan="2" ></Image>
+                                <TextBlock Text="Username" Grid.Column="1" Grid.ColumnSpan="4"/>
+                                <TextBlock Text="First Name " Grid.Column="1" Grid.Row="1"/>
+                                <TextBlock Text="Surname" Grid.Column="2" Grid.Row="1" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+            <!--<StackPanel Grid.Column="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Grid Background="#f00f4f">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="280*"/>
+                        <RowDefinition Height="280*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Content="Friends"
+                            Margin="5"
+                            Foreground="White"/>
+                    <Button HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Content="Messages"
+                            Margin="5"
+                            Foreground="White"/>
+                    <Button HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Content="Settings"
+                            Margin="5"
+                            Foreground="White"/>
+                    <Button HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Content="Search"
+                            Margin="5"
+                            Foreground="White"/>
+                </Grid>
+            </StackPanel>-->
             <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="180*"/>
                 <ColumnDefinition Width="180*"/>
