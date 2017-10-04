@@ -45,6 +45,12 @@ namespace Encrypic.Views
 
             colorsListView.ItemsSource = NamedColors;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            gridmenu.Visibility = Visibility.Visible;
+            welcome.Visibility = Visibility.Collapsed;
+        }
     }
 
     public class NamedColor

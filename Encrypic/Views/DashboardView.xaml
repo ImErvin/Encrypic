@@ -7,136 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <!-- Adapted from https://github.com/colinkiama/UWP-Circle-Button-Style- -->
-        <Style x:Key="circleButtonStyle"
-                  TargetType="Button">
-            <Setter Property="Background"
-              Value="{ThemeResource ButtonBackground}" />
-            <Setter Property="Foreground"
-              Value="{ThemeResource ButtonForeground}" />
-            <Setter Property="BorderBrush"
-              Value="{ThemeResource ButtonBorderBrush}" />
-            <Setter Property="BorderThickness"
-              Value="{ThemeResource ButtonBorderThemeThickness}" />
-            <Setter Property="Padding"
-              Value="8,4,8,4" />
-            <Setter Property="HorizontalAlignment"
-              Value="Left" />
-            <Setter Property="VerticalAlignment"
-              Value="Center" />
-            <Setter Property="FontFamily"
-              Value="{ThemeResource ContentControlThemeFontFamily}" />
-            <Setter Property="FontWeight"
-              Value="Normal" />
-            <Setter Property="FontSize"
-              Value="{ThemeResource ControlContentThemeFontSize}" />
-            <Setter Property="UseSystemFocusVisuals"
-              Value="True" />
-            <Setter Property="FocusVisualMargin"
-              Value="-3" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid x:Name="RootGrid"
-                  Background="{TemplateBinding Background}"
-                  CornerRadius="100,100,100,100">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal">
-                                        <Storyboard>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="PointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
-                                                     Storyboard.TargetName="RootGrid">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBackgroundPointerOver}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBorderBrushPointerOver}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonForegroundPointerOver}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
-                                                     Storyboard.TargetName="RootGrid">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBackgroundPressed}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBorderBrushPressed}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonForegroundPressed}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"
-                                                     Storyboard.TargetName="RootGrid">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBackgroundDisabled}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonBorderBrushDisabled}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"
-                                                     Storyboard.TargetName="ContentPresenter">
-                                                <DiscreteObjectKeyFrame KeyTime="0"
-                                                Value="{ThemeResource ButtonForegroundDisabled}" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-
-                            <ContentPresenter x:Name="ContentPresenter"
-                                AutomationProperties.AccessibilityView="Raw"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                ContentTransitions="{TemplateBinding ContentTransitions}"
-                                Content="{TemplateBinding Content}"
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Padding="{TemplateBinding Padding}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                CornerRadius="100,100,100,100" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="sideBarButton" TargetType="Button" >
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="FontWeight" Value="Light"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="Background" Value="#d62839"/>
-            <Setter Property="Foreground" Value="#FBF5F3"/>
-            <Setter Property="BorderBrush" Value="#7B0828"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-    </Page.Resources>
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -162,7 +32,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="75"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0"
@@ -202,7 +72,29 @@
                                Text="&#xE7E8;" />
                 </Button>
             </StackPanel>
-            <Grid Grid.Column="1"
+            <StackPanel Grid.Column="1" x:Name="welcome"
+                        VerticalAlignment="Top"
+                        Margin="0 50 0 0"
+                        HorizontalAlignment="Center">
+                <Image Source="../Assets/samplepp.png"
+                       Margin="10,10,10,10"
+                       Height="100"/>
+                <TextBlock Foreground="Gray" 
+                       FontFamily="../Assets/Fonts/Ubuntu-R.ttf#Ubuntu"
+                       FontSize="15"
+                       Margin="10"
+                       Text="Welcome Back Username"/>
+                <TextBlock Foreground="Crimson" 
+                       FontFamily="../Assets/Fonts/Ubuntu-R.ttf#Ubuntu"
+                       FontSize="15"
+                       Margin="10 0 10 10"
+                       Text="You have 5 new messages"/>
+                <Button HorizontalAlignment="Stretch"
+                        Background="#522B47"
+                        Foreground="White"
+                        FontFamily="../Assets/Fonts/Ubuntu-R.ttf#Ubuntu" Click="Button_Click">Continue</Button>
+            </StackPanel>
+            <Grid Grid.Column="1" Visibility="Collapsed" x:Name="gridmenu"
                         Background="White">
                 <ListView x:Name="colorsListView">
                     <ListView.ItemTemplate>
