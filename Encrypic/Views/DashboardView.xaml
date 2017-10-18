@@ -74,7 +74,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" x:Name="welcome"
                         VerticalAlignment="Top"
-                        Margin="0 50 0 0"
+                        Margin="0 40 0 0"
                         HorizontalAlignment="Center">
                 <Image Source="../Assets/samplepp.png"
                        Margin="10,10,10,10"
@@ -84,11 +84,6 @@
                        FontSize="15"
                        Margin="10"
                        Text="Welcome Back Username"/>
-                <TextBlock Foreground="Crimson" 
-                       FontFamily="../Assets/Fonts/Ubuntu-R.ttf#Ubuntu"
-                       FontSize="15"
-                       Margin="10 0 10 10"
-                       Text="You have 5 new messages"/>
                 <Button HorizontalAlignment="Stretch"
                         Background="#522B47"
                         Foreground="White"

@@ -37,7 +37,7 @@ namespace Encrypic.Views
 
             // For each property, create a NamedColor with the property name (color name),
             // and property value (color value). Add it the NamedColors list.
-            for (int i = 0; i < propertyInfos.Count(); i++)
+            for (int i = 0; i < 4; i++)
             {
                 NamedColors.Add(new NamedColor(propertyInfos.ElementAt(i).Name,
                                     (Color)propertyInfos.ElementAt(i).GetValue(null)));
