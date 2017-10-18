@@ -79,7 +79,13 @@
                        Margin="10"
                        Text="Username"
                        HorizontalAlignment="Center"/>
-                <Grid>
+                <TextBlock Foreground="#d62839" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Text="Error Message"
+                       HorizontalAlignment="Center"/>
+
+                <Grid x:Name="changePasswordGrid" Visibility="Collapsed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="135"/>
                         <ColumnDefinition Width="*"/>
@@ -88,7 +94,7 @@
                         <RowDefinition Height="52"/>
                         <RowDefinition Height="52"/>
                         <RowDefinition Height="52"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="46"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0"
                                Grid.Column="0"
@@ -105,7 +111,7 @@
                     <TextBox Grid.Column="1"
                              Grid.Row="1"
                              Margin="10 10 10 10" 
-                             PlaceholderText="Surname"/>
+                             PlaceholderText="*******"/>
                     <TextBlock Grid.Row="2"
                                Grid.Column="0"
                                Margin="10 15 10 10"
@@ -113,32 +119,32 @@
                     <TextBox Grid.Column="1"
                              Grid.Row="2"
                              Margin="10 10 10 10" 
-                             PlaceholderText="abcdefg"/>
-                    <TextBlock Grid.Column="1"
+                             PlaceholderText="*******"/>
+                    <TextBlock Grid.Column="0"
                                Grid.Row="3"
                                Margin="10 10 10 10"
                                Foreground="#522B47" 
                                FontFamily="Segoe UI Light" 
                                FontSize="12"
                                FontWeight="Bold"
-                               HorizontalAlignment="Right">
+                               HorizontalAlignment="Left">
+                        <Hyperlink Foreground="#522B47"
+                                   x:Name="cancelChangePasswordHypeLink"
+                                   Click="cancelChangePasswordHypeLink_Click">
+                            Cancel
+                        </Hyperlink>
                     </TextBlock>
-                </Grid>
-                <RelativePanel>
                     <Button Margin="10 0 10 10"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
                         HorizontalAlignment="Right"
                         Background="#522B47"
                         Foreground="White"
                         Content="Change Password">
                     </Button>
-                    <Button Margin="10 0 10 10"
-                        HorizontalAlignment="Right"
-                        Background="#522B47"
-                        Foreground="White"
-                        Content="Cancel">
-                    </Button>
-                </RelativePanel>
-                <Grid>
+                </Grid>
+
+                <Grid x:Name="userSettingsGrid" Visibility="Visible">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="*"/>
@@ -147,7 +153,7 @@
                         <RowDefinition Height="52"/>
                         <RowDefinition Height="52"/>
                         <RowDefinition Height="52"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="46"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0"
                                Grid.Column="0"
@@ -173,27 +179,29 @@
                              Grid.Row="2"
                              Margin="10 10 10 10" 
                              PlaceholderText="abcdefg"/>
-                    <TextBlock Grid.Column="1"
+                    <TextBlock Grid.ColumnSpan="2"
                                Grid.Row="3"
                                Margin="10 10 10 10"
                                Foreground="#522B47" 
                                FontFamily="Segoe UI Light" 
                                FontSize="12"
                                FontWeight="Bold"
-                               HorizontalAlignment="Right">
-                        <Hyperlink Foreground="#522B47">
+                               HorizontalAlignment="Left">
+                        <Hyperlink Foreground="#522B47"
+                                   x:Name="changePasswordHypeLink"
+                                   Click="changePasswordHypeLink_Click">
                             Change password
                         </Hyperlink>
                     </TextBlock>
-                </Grid>
-                
-                
-                <Button Margin="10 0 10 10"
+                    <Button Margin="10 0 10 10"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="2"
                         HorizontalAlignment="Right"
                         Background="#522B47"
                         Foreground="White"
                         Content="Update Profile">
-                </Button>
+                    </Button>
+                </Grid>
             </StackPanel>
 
             <!--<StackPanel Grid.Column="1"

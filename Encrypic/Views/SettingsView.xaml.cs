@@ -26,5 +26,17 @@ namespace Encrypic.Views
         {
             this.InitializeComponent();
         }
+
+        private void changePasswordHypeLink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            userSettingsGrid.Visibility = Visibility.Collapsed;
+            changePasswordGrid.Visibility = Visibility.Visible;
+        }
+
+        private void cancelChangePasswordHypeLink_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            userSettingsGrid.Visibility = Visibility.Visible;
+            changePasswordGrid.Visibility = Visibility.Collapsed;
+        }
     }
 }

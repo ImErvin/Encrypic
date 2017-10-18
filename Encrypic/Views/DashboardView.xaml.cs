@@ -51,6 +51,11 @@ namespace Encrypic.Views
             gridmenu.Visibility = Visibility.Visible;
             welcome.Visibility = Visibility.Collapsed;
         }
+
+        private void settingsSideBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Views.SettingsView), null);
+        }
     }
 
     public class NamedColor

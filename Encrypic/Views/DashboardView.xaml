@@ -8,16 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Border BorderBrush="#522B47" BorderThickness="0 0 0 2">
-            <RelativePanel>
-                <Image Source="../Assets/eplogo.png"
-                   RelativePanel.AlignHorizontalCenterWithPanel="True"
-                   Margin="0 10 0 10"/>
-            </RelativePanel>
-        </Border>-->
         <Border BorderBrush="#522B47" 
                 BorderThickness="0 0 0 2"
                 VerticalAlignment="Top">
@@ -32,7 +22,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="61"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0"
@@ -56,6 +46,8 @@
                                Text="&#xE722;"/>
                 </Button>
                 <Button HorizontalAlignment="Center"
+                        x:Name="settingsSideBarButton"
+                        Click="settingsSideBarButton_Click"
                         Style="{StaticResource sideBarButton}"
                         Grid.Column="2" 
                         Grid.Row="0"
