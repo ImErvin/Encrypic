@@ -8,120 +8,64 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Border BorderBrush="#522B47" 
-                BorderThickness="0 0 0 2"
-                VerticalAlignment="Top">
-            <RelativePanel Height="50">
-                <Image Source="../Assets/eplogo.png"
-                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       Margin="0 10 0 10"/>
-            </RelativePanel>
-        </Border>
-        <Grid Margin=" 0 51 0 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0"
-                        Grid.Row="0" 
-                        Grid.RowSpan="2"
-                        Background="#522B47">
-                <Button HorizontalAlignment="Center"
-                        Style="{StaticResource sideBarButton}"
-                        Grid.Column="0" 
-                        Grid.Row="0"
-                        Margin="5">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE8BD;"/>
-                </Button>
-                <Button HorizontalAlignment="Center"
-                        Style="{StaticResource sideBarButton}"
-                        Grid.Column="1" 
-                        Grid.Row="0"
-                        Margin="5" Click="Button_Click">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE722;"/>
-                </Button>
-                <Button HorizontalAlignment="Center"
-                        Style="{StaticResource sideBarButton}"
-                        Grid.Column="2" 
-                        Grid.Row="0"
-                        Margin="5">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE713;" />
-                </Button>
-                <Button HorizontalAlignment="Center"
-                        Style="{StaticResource sideBarButton}"
-                        Grid.Column="2" 
-                        Grid.Row="0"
-                        Margin="5">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE7E8;" />
-                </Button>
-            </StackPanel>
-            
-            <StackPanel Grid.Column="1"
-                    HorizontalAlignment="Center" 
+        <StackPanel HorizontalAlignment="Center" 
                     VerticalAlignment="Top"
                     Background="White"
                         Width="280"
                         Margin="0 20 0 0">
-                <Frame x:Name="ContentFrame"></Frame>
-                <Image Source="../Assets/samplepp.png"
+            <Frame x:Name="ContentFrame"></Frame>
+            <Image Source="../Assets/samplepp.png"
                    Margin="10,10,10,10"
                        Width="100"
                        Height="100"/>
-                <TextBlock Foreground="Gray" 
+            <TextBlock Foreground="Gray" 
                        FontFamily="Segoe UI Light" 
                        FontSize="30"
                        Margin="10"
                        Text="Username"
                        HorizontalAlignment="Center"/>
-                <TextBlock Foreground="#d62839" 
+            <TextBlock Foreground="#d62839" 
                        FontFamily="Segoe UI Light" 
                        FontSize="15"
                        Text="Error Message"
                        HorizontalAlignment="Center"/>
 
-                <Grid x:Name="changePasswordGrid" Visibility="Collapsed">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="135"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="46"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"
+            <Grid x:Name="changePasswordGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="46"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="Old Password:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="0"
                              Margin="10 10 10 10" 
                              PlaceholderText="*******"/>
-                    <TextBlock Grid.Row="1"
+                <TextBlock Grid.Row="1"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="New Password:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="1"
                              Margin="10 10 10 10" 
                              PlaceholderText="*******"/>
-                    <TextBlock Grid.Row="2"
+                <TextBlock Grid.Row="2"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="Repeat Password:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="2"
                              Margin="10 10 10 10" 
                              PlaceholderText="*******"/>
-                    <TextBlock Grid.Column="0"
+                <TextBlock Grid.Column="0"
                                Grid.Row="3"
                                Margin="10 10 10 10"
                                Foreground="#522B47" 
@@ -134,53 +78,53 @@
                                    Click="cancelChangePasswordHypeLink_Click">
                             Cancel
                         </Hyperlink>
-                    </TextBlock>
-                    <Button Margin="10 0 10 10"
+                </TextBlock>
+                <Button Margin="10 0 10 10"
                             Grid.Row="3"
                             Grid.ColumnSpan="2"
                         HorizontalAlignment="Right"
                         Background="#522B47"
                         Foreground="White"
                         Content="Change Password">
-                    </Button>
-                </Grid>
+                </Button>
+            </Grid>
 
-                <Grid x:Name="userSettingsGrid" Visibility="Visible">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="52"/>
-                        <RowDefinition Height="46"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0"
+            <Grid x:Name="userSettingsGrid" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="52"/>
+                    <RowDefinition Height="46"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="First Name:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="0"
                              Margin="10 10 10 10" 
                              PlaceholderText="First Name"/>
-                    <TextBlock Grid.Row="1"
+                <TextBlock Grid.Row="1"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="Surname:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="1"
                              Margin="10 10 10 10" 
                              PlaceholderText="Surname"/>
-                    <TextBlock Grid.Row="2"
+                <TextBlock Grid.Row="2"
                                Grid.Column="0"
                                Margin="10 15 10 10"
                                Text="Secret Key:"/>
-                    <TextBox Grid.Column="1"
+                <TextBox Grid.Column="1"
                              Grid.Row="2"
                              Margin="10 10 10 10" 
                              PlaceholderText="abcdefg"/>
-                    <TextBlock Grid.ColumnSpan="2"
+                <TextBlock Grid.ColumnSpan="2"
                                Grid.Row="3"
                                Margin="10 10 10 10"
                                Foreground="#522B47" 
@@ -193,98 +137,16 @@
                                    Click="changePasswordHypeLink_Click">
                             Change password
                         </Hyperlink>
-                    </TextBlock>
-                    <Button Margin="10 0 10 10"
+                </TextBlock>
+                <Button Margin="10 0 10 10"
                             Grid.Row="3"
                             Grid.ColumnSpan="2"
                         HorizontalAlignment="Right"
                         Background="#522B47"
                         Foreground="White"
                         Content="Update Profile">
-                    </Button>
-                </Grid>
-            </StackPanel>
-
-            <!--<StackPanel Grid.Column="1"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                <Grid Background="#f00f4f">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="280*"/>
-                        <RowDefinition Height="280*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            Content="Friends"
-                            Margin="5"
-                            Foreground="White"/>
-                    <Button HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Grid.Column="1"
-                            Grid.Row="0"
-                            Content="Messages"
-                            Margin="5"
-                            Foreground="White"/>
-                    <Button HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Grid.Column="0"
-                            Grid.Row="1"
-                            Content="Settings"
-                            Margin="5"
-                            Foreground="White"/>
-                    <Button HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            Content="Search"
-                            Margin="5"
-                            Foreground="White"/>
-                </Grid>
-            </StackPanel>-->
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="180*"/>
-                <ColumnDefinition Width="180*"/>
-            </Grid.ColumnDefinitions>
-            <Grid VerticalAlignment="Bottom">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button VerticalAlignment="Stretch" 
-                        HorizontalAlignment="Stretch"
-                        Grid.Column="0" 
-                        Grid.Row="0">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE80F;" 
-                               FontSize="30" />
                 </Button>
-                <Button VerticalAlignment="Stretch" 
-                        HorizontalAlignment="Stretch"
-                        Grid.Column="1" 
-                        Grid.Row="0">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE722;" 
-                               FontSize="30" />
-                </Button>
-                <Button VerticalAlignment="Stretch" 
-                        HorizontalAlignment="Stretch"
-                        Grid.Column="2" 
-                        Grid.Row="0">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" 
-                               Text="&#xE713;" 
-                               FontSize="30" />
-                </Button>
-            </Grid>-->
-        </Grid>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

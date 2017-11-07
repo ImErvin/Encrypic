@@ -31,14 +31,24 @@ namespace Encrypic.Views
             contentFrame.Navigate(typeof(MessagesView), null);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void messages_sidebarbutton_Click(object sender, RoutedEventArgs e)
         {
-            
+            contentFrame.Navigate(typeof(MessagesView), null);
+        }
+
+        private void camera_sidebarbutton_Click(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(MessagesView), null);
+        }
+
+        private void signout_sidebarbutton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginView), null);
         }
 
         private void settingsSideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Views.SettingsView), null);
+            contentFrame.Navigate(typeof(SettingsView), null);
         }
     }
 
