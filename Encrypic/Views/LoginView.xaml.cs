@@ -27,6 +27,13 @@ namespace Encrypic.Views
             this.InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            
+
+        }
+
+
         private void sign_up_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
         {
             Frame.Navigate(typeof(Views.RegisterView), null);

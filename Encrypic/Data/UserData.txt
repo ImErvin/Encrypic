@@ -1,0 +1,7 @@
+﻿{
+  "firstName": "Ervin",
+  "surname": "Mamutov",
+  "username": "imervin",
+  "password": "12345",
+  "secretkey": "skey"
+}

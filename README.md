@@ -5,5 +5,12 @@ A Universal Windows Platform(UWP) application built using the MVVM design to eas
 
 The idea behind Encrypic is to create an application that allows users to send encrypted images to eachother and provide a private key to decrypt those images. The sender can choose to self-destruct the image after decryption or to re-encrypt the image and provide the private key again.
 
+### Features
+    1. User Accounts
+    2. Camera
+    3. Cloud Storage
+    4. Push Notifications
+    5. Toast Notifications
+
 #### Credit
 Logo created using [Logomakr](https://logomakr.com/).
