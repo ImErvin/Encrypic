@@ -22,7 +22,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="61"/>
+                <ColumnDefinition Width="65"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0"
@@ -41,7 +41,7 @@
                         Style="{StaticResource sideBarButton}"
                         Grid.Column="1" 
                         Grid.Row="0"
-                        Margin="5">
+                        Margin="5" Click="Button_Click">
                     <TextBlock FontFamily="Segoe MDL2 Assets" 
                                Text="&#xE722;"/>
                 </Button>
@@ -62,13 +62,14 @@
                                Text="&#xE7E8;" />
                 </Button>
             </StackPanel>
-        
+            
             <StackPanel Grid.Column="1"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Top"
                     Background="White"
                         Width="280"
                         Margin="0 20 0 0">
+                <Frame x:Name="ContentFrame"></Frame>
                 <Image Source="../Assets/samplepp.png"
                    Margin="10,10,10,10"
                        Width="100"

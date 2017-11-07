@@ -38,5 +38,10 @@ namespace Encrypic.Views
             userSettingsGrid.Visibility = Visibility.Visible;
             changePasswordGrid.Visibility = Visibility.Collapsed;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(LoginView), null);
+        }
     }
 }

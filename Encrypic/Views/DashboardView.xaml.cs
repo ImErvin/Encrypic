@@ -24,32 +24,16 @@ namespace Encrypic.Views
     /// </summary>
     public sealed partial class DashboardView : Page
     {
-        // The list of colors won't change after it's populated, so we use List<T>. 
-        // If the data can change, we should use an ObservableCollection<T> intead.
-        List<NamedColor> NamedColors = new List<NamedColor>();
-
         public DashboardView()
         {
             this.InitializeComponent();
 
-            // Use reflection to get all the properties of the Colors class.
-            IEnumerable<PropertyInfo> propertyInfos = typeof(Colors).GetRuntimeProperties();
-
-            // For each property, create a NamedColor with the property name (color name),
-            // and property value (color value). Add it the NamedColors list.
-            for (int i = 0; i < 4; i++)
-            {
-                NamedColors.Add(new NamedColor(propertyInfos.ElementAt(i).Name,
-                                    (Color)propertyInfos.ElementAt(i).GetValue(null)));
-            }
-
-            colorsListView.ItemsSource = NamedColors;
+            contentFrame.Navigate(typeof(MessagesView), null);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            gridmenu.Visibility = Visibility.Visible;
-            welcome.Visibility = Visibility.Collapsed;
+            
         }
 
         private void settingsSideBarButton_Click(object sender, RoutedEventArgs e)
@@ -58,21 +42,5 @@ namespace Encrypic.Views
         }
     }
 
-    public class NamedColor
-    {
-        public NamedColor(string colorName, Color colorValue)
-        {
-            Name = colorName;
-            Color = colorValue;
-        }
 
-        public string Name { get; set; }
-
-        public Color Color { get; set; }
-
-        public SolidColorBrush Brush
-        {
-            get { return new SolidColorBrush(Color); }
-        }
-    }
 }
