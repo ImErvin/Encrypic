@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,9 @@ namespace Encrypic.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            UserModel userModel = new UserModel();
+
+            userModel.getUsers();
 
         }
 
