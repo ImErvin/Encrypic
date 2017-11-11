@@ -1,4 +1,5 @@
 ﻿using Encrypic.Models;
+using Encrypic.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace Encrypic.Views
     /// </summary>
     public sealed partial class LoginView : Page
     {
+        UserViewModel uvm = new UserViewModel();
         public LoginView()
         {
             this.InitializeComponent();
@@ -42,9 +44,12 @@ namespace Encrypic.Views
             Frame.Navigate(typeof(Views.RegisterView), null);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void signIn_button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Views.DashboardView), null);
+
+            uvm.userLogin(username_tbox.Text, password_tbox.Password.ToString());
+
         }
     }
+    
 }

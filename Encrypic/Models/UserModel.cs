@@ -12,11 +12,11 @@ namespace Encrypic.Models
 {
     class UserModel
     {
-        private List<UserObject> userList { get; set; }
+        private List<UserObject> userList = new List<UserObject>();
 
         public UserModel()
         {
-
+            this.getUsers();
         }
 
         public async void getUsers()
@@ -28,13 +28,58 @@ namespace Encrypic.Models
             try
             {
                 var userJson = JsonArray.Parse(fileText);
-                Debug.WriteLine(userJson);
-            }catch(Exception exJa)
+                setUserList(userJson);
+            }
+            catch(Exception exJa)
             {
                 Debug.WriteLine(exJa);
             }
+        }
 
+        public List<UserObject> getUserList()
+        {
+            Debug.WriteLine(userList.ToString());
+            return userList;
+        }
+
+        public void setUserList(JsonArray userJson)
+        {
             
+            foreach (var item in userJson)
+            {
+                var obj = item.GetObject();
+
+                UserObject user = new UserObject();
+
+                foreach (var key in obj.Keys)
+                {
+                    IJsonValue value;
+                    if (!obj.TryGetValue(key, out value))
+                        continue;
+
+                    switch (key)
+                    {
+                        case "firstName":
+                            user.firstName = value.GetString();
+                            break;
+                        case "surname":
+                            user.surname = value.GetString();
+                            break;
+                        case "username":
+                            user.username = value.GetString();
+                            break;
+                        case "password":
+                            user.password = value.GetString();
+                            break;
+                        case "secretkey":
+                            user.secretkey = value.GetString();
+                            break;
+                    }
+                }
+
+                userList.Add(user);
+            }
+            Debug.WriteLine(userList[0].username.ToString());
         }
 
     }

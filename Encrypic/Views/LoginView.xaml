@@ -21,13 +21,16 @@
                        Margin="10"
                        Text="Sign in"/>
             <TextBox Margin="10 10 10 10"
-                     PlaceholderText="Username"/>
+                     PlaceholderText="Username"
+                     x:Name="username_tbox"/>
             <PasswordBox Margin="10 10 10 10"
-                         PlaceholderText="Password"/>
+                         PlaceholderText="Password"
+                         x:Name="password_tbox"/>
             <Button Margin="10 0 10 10"
                     Background="#522B47"
                     Foreground="White"
-                    Content="Sign in" Click="Button_Click">
+                    Content="Sign in"
+                    x:Name="signIn_button" Click="signIn_button_Click">
             </Button>
             <Grid>
                 <Grid.ColumnDefinitions>
