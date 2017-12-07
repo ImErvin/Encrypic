@@ -99,6 +99,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Dashboard\CameraView.xaml.cs">
+      <DependentUpon>CameraView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard\FriendsListView.xaml.cs">
       <DependentUpon>FriendsListView.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,13 @@
     <None Include="Encrypic2017_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\eplogo.png" />
+    <Content Include="Assets\epsmlogo.png" />
+    <Content Include="Assets\loginbg.png" />
+    <Content Include="Assets\loginbg1.jpg" />
+    <Content Include="Assets\loginbg1.png" />
+    <Content Include="Assets\loginbg2.png" />
+    <Content Include="Assets\samplepp.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -148,6 +158,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dashboard\CameraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dashboard\FriendsListView.xaml">
       <SubType>Designer</SubType>

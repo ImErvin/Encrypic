@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic2017.Views.Login;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -66,8 +68,10 @@ namespace Encrypic2017
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(LoginView), e.Arguments);
                 }
+
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(400, 300));
                 // Ensure the current window is active
                 Window.Current.Activate();
             }

@@ -6,8 +6,82 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="440"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="280"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Row="0" Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Height="420"
+                    Width="260"
+                    MinHeight="440"
+                    MinWidth="280"
+                    Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+            <Border BorderBrush="#522B47" 
+                BorderThickness="2"></Border>
+            <Image Source="../../Assets/eplogo.png"
+                   Margin="10,10,10,10"/>
+            <TextBlock Foreground="Gray" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="30"
+                       Margin="10"
+                       Text="Sign in"/>
+            <TextBlock Foreground="#d62839" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10, -5, 0, 0"
+                       Text="Error Message"
+                       Visibility="Collapsed"
+                       x:Name="error_message"/>
+            <TextBox Margin="10 10 10 10"
+                     PlaceholderText="Username"
+                     x:Name="username_tbox"/>
+            <PasswordBox Margin="10 10 10 10"
+                         PlaceholderText="Password"
+                         x:Name="password_tbox"/>
+            <Button Margin="10 0 10 10"
+                    Background="#522B47"
+                    Foreground="White"
+                    Content="Sign in"
+                    x:Name="signin_button" Click="signin_button_Click">
+            </Button>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="185" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Margin="10 0 0 0"
+                           Foreground="Gray" 
+                           FontFamily="Segoe UI Light" 
+                           FontSize="12"
+                           Text="Don't have an Encrypic account?"/>
+                <TextBlock Grid.Column="1"
+                           Margin="0 0 5 0"
+                           Foreground="#522B47" 
+                           FontFamily="Segoe UI Light" 
+                           FontSize="12"
+                           FontWeight="Bold">
+                        <Hyperlink x:Name="sign_up_hl"
+                                   Foreground="#522B47">
+                            Sign up now
+                        </Hyperlink>
+                </TextBlock>
+            </Grid>
+            <TextBlock HorizontalAlignment="Center"
+                       Margin="10 80 10 10"
+                       FontFamily="Segoe UI Light" 
+                       FontSize="12"
+                       Foreground="Gray"
+                       Text="© Encrypic 2017"/>
+        </StackPanel>
     </Grid>
 </Page>
