@@ -16,7 +16,6 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Mail" Content="Home" Tag="home" />
                 <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader Content="Navigation"/>
                 <NavigationViewItem Icon="Contact" Content="My Profile" Tag="profile"/>
                 <NavigationViewItem Icon="People" Content="Friends" Tag="friends"/>
                 <NavigationViewItem Icon="Camera" Content="Camera" Tag="camera"/>
