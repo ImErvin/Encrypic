@@ -5,6 +5,7 @@
 
 # Local documentation
 Documentation/
+backup/
 
 # User-specific files
 *.suo
