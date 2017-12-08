@@ -26,5 +26,10 @@ namespace Encrypic2017.Views.Dashboard
         {
             this.InitializeComponent();
         }
+
+        private void friendsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedUsername.Text = friendsList.SelectedItem.ToString();
+        }
     }
 }

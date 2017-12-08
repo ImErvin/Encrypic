@@ -26,5 +26,16 @@ namespace Encrypic2017.Views.Login
         {
             this.InitializeComponent();
         }
+
+
+        private void singup_button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginView));
+        }
+
+        private void signin_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            Frame.Navigate(typeof(LoginView));
+        }
     }
 }

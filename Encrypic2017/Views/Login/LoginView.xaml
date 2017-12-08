@@ -6,8 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="440"/>
@@ -20,11 +23,14 @@
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
-                    Height="420"
-                    Width="260"
-                    MinHeight="440"
-                    MinWidth="280"
+                    Height="440"
+                    Width="280"
                     Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+            <StackPanel.Transitions>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition x:Name="MyEdge" Edge="Left" />
+                </TransitionCollection>
+            </StackPanel.Transitions>
             <Border BorderBrush="#522B47" 
                 BorderThickness="2"></Border>
             <Image Source="../../Assets/eplogo.png"
@@ -71,7 +77,8 @@
                            FontSize="12"
                            FontWeight="Bold">
                         <Hyperlink x:Name="sign_up_hl"
-                                   Foreground="#522B47">
+                                   Foreground="#522B47"
+                                   Click="sign_up_hl_Click">
                             Sign up now
                         </Hyperlink>
                 </TextBlock>

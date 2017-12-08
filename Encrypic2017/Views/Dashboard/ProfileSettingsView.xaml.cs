@@ -26,5 +26,10 @@ namespace Encrypic2017.Views.Dashboard
         {
             this.InitializeComponent();
         }
+
+        private void changepassword_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+
+        }
     }
 }

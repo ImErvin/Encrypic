@@ -114,9 +114,6 @@
     <Compile Include="Views\Dashboard\ProfileSettingsView.xaml.cs">
       <DependentUpon>ProfileSettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dashboard\ProfileView.xaml.cs">
-      <DependentUpon>ProfileView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -136,14 +133,8 @@
   <ItemGroup>
     <Content Include="Assets\eplogo.png" />
     <Content Include="Assets\epsmlogo.png" />
-    <Content Include="Assets\grad.png" />
-    <Content Include="Assets\grad1.jpg" />
-    <Content Include="Assets\grad3.png" />
-    <Content Include="Assets\loginbg.png" />
-    <Content Include="Assets\loginbg1.jpg" />
-    <Content Include="Assets\loginbg1.png" />
     <Content Include="Assets\loginbg2.png" />
-    <Content Include="Assets\mountains.png" />
+    <Content Include="Assets\profilepic.png" />
     <Content Include="Assets\samplepp.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -180,10 +171,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dashboard\ProfileSettingsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Dashboard\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

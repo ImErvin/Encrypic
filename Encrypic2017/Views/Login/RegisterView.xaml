@@ -6,7 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="440"/>
@@ -14,13 +18,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="280"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.RowSpan="2" Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
+        <Image Grid.RowSpan="2" Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <StackPanel HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
-                    Height="420"
-                    Width="260"
+                    Height="440"
+                    Width="280"
                     Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+            <StackPanel.Transitions>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition x:Name="MyEdge" Edge="Right" />
+                </TransitionCollection>
+            </StackPanel.Transitions>
             <Border BorderBrush="#522B47" 
                 BorderThickness="2"></Border>
             <Image Source="../../Assets/eplogo.png"
@@ -32,8 +41,8 @@
                        Text="Sign up"/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130" />
-                    <ColumnDefinition Width="130" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="140" />
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
                          Margin="10 10 5 10"
@@ -48,10 +57,12 @@
                      PlaceholderText="Password"></PasswordBox>
             <PasswordBox Margin="10 0 10 10"
                      PlaceholderText="Confirm Password"></PasswordBox>
-            <Button Margin="10 0 10 10"
+            <Button x:Name="singup_button"
+                    Margin="10 0 10 10"
                     Background="#522B47"
                     Foreground="White"
-                    Content="Sign up"/>
+                    Content="Sign up"
+                    Click="singup_button_Click"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="195" />
@@ -69,7 +80,8 @@
                            FontFamily="Segoe UI Light" 
                            FontSize="12"
                            FontWeight="Bold">
-                    <Hyperlink x:Name="sign_in_hl"
+                    <Hyperlink x:Name="signin_hl"
+                               Click="signin_hl_Click"
                                Foreground="#522B47">
                         Sign in
                     </Hyperlink>

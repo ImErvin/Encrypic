@@ -8,26 +8,39 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="49"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+            <AppBarToggleButton Icon="Add" Label="New Message" Foreground="Gray"/>
+        </CommandBar>
         <!-- Foreground element -->
-            <ListView x:Name="ForegroundElement">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="0 25 0 25" HorizontalAlignment="Center"
-                          VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition MinWidth="150"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Image Height="100" Width="100" Margin="0 -5 0 0" Source="../../Assets/samplepp.png" Grid.RowSpan="2" ></Image>
-                        <TextBlock Text="Username" Grid.Column="1" Grid.ColumnSpan="2" FontSize="40"/>
-                        <TextBlock Text="The text of some message blah lbha skjsdg sdg sldgkn slkdng lkqweqweqweqwesdg" Grid.Column="1" Grid.Row="1"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView x:Name="ForegroundElement" 
+                  Visibility="Visible"
+                  Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0 30 0 30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Height="100" Width="100" Margin="0 -5 0 0" Grid.RowSpan="2">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="../../Assets/profilepic.png" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Username" Grid.Column="1" Grid.ColumnSpan="2" FontSize="40"/>
+                            <TextBlock Text="The text of some message blah lbha skjsdg sdg sldgkn slkdng lkqweqweqweqwesdg" Grid.Column="1" Grid.Row="1" Foreground="Gray"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            
                 <x:String>Item 1</x:String>
                 <x:String>Item 2</x:String>
                 <x:String>Item 3</x:String>

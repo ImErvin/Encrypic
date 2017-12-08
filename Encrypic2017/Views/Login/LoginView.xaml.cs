@@ -29,7 +29,12 @@ namespace Encrypic2017.Views.Login
 
         private void signin_button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MasterView), null);
+            Frame.Navigate(typeof(MasterView));
+        }
+
+        private void sign_up_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            Frame.Navigate(typeof(RegisterView));
         }
     }
 }

@@ -8,9 +8,148 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-            Profile Settings View
-        </TextBlock>
+        <StackPanel Grid.Column="1"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top"
+                    Background="White"
+                        Width="280"
+                        Margin="0 20 0 0">
+            <Ellipse Margin="10,10,10,10"
+                     Width="100"
+                     Height="100">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../../Assets/profilepic.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Foreground="Gray" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="30"
+                       Margin="10"
+                       Text="Username"
+                       HorizontalAlignment="Center"/>
+            <Grid x:Name="changepassword_grid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="Old Password:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="*******"/>
+                <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="New Password:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="Surname"/>
+                <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="Repeat Password:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="2"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="abcdefg"/>
+                <TextBlock Grid.Column="1"
+                               Grid.Row="3"
+                               Margin="10 10 10 10"
+                               Foreground="#522B47" 
+                               FontFamily="Segoe UI Light" 
+                               FontSize="12"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Right">
+                </TextBlock>
+                <RelativePanel Grid.Row="3"
+                               Grid.ColumnSpan="2">
+                    <Button Margin="10 0 10 10"
+                            HorizontalAlignment="Right"
+                            Background="#522B47"
+                            Foreground="White"
+                            Content="Change Password">
+                    </Button>
+                    <Button Margin="10 0 10 10"
+                            HorizontalAlignment="Right"
+                            Background="#522B47"
+                            Foreground="White"
+                            Content="Cancel"
+                            RelativePanel.AlignRightWithPanel="True">
+                    </Button>
+                </RelativePanel>
+            </Grid>
+
+            <Grid x:Name="changedetails_grid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="First Name:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="First Name"/>
+                <TextBlock Grid.Row="1"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="Surname:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="Surname"/>
+                <TextBlock Grid.Row="2"
+                               Grid.Column="0"
+                               Margin="10 15 10 10"
+                               Text="Secret Key:"/>
+                <TextBox Grid.Column="1"
+                             Grid.Row="2"
+                             Margin="10 10 10 10" 
+                             PlaceholderText="abcdefg"/>
+                <TextBlock Grid.Column="1"
+                               Grid.Row="3"
+                               Margin="10 10 10 10"
+                               Foreground="#522B47" 
+                               FontFamily="Segoe UI Light" 
+                               FontSize="12"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Right">
+                        <Hyperlink x:Name="changepassword_hl"
+                                   Click="changepassword_hl_Click"
+                                   Foreground="#522B47">
+                            Change password
+                        </Hyperlink>
+                </TextBlock>
+                <Button Grid.Row="4"
+                        Grid.Column="1"
+                        Margin="10 0 10 10"
+                        HorizontalAlignment="Right"
+                        Background="#522B47"
+                        Foreground="White"
+                        Content="Update Profile">
+                </Button>
+            </Grid>
+        </StackPanel>
+
     </Grid>
+    
 </Page>

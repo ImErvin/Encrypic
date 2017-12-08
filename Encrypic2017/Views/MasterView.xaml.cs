@@ -1,4 +1,5 @@
 ﻿using Encrypic2017.Views.Dashboard;
+using Encrypic2017.Views.Login;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,19 +28,15 @@ namespace Encrypic2017.Views
         public MasterView()
         {
             this.InitializeComponent();
+            ContentFrame.Navigate(typeof(InboxView));
         }
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            // you can also add items in code behind
-            NavView.MenuItems.Add(new NavigationViewItemSeparator());
-            NavView.MenuItems.Add(new NavigationViewItem()
-            { Content = "My content", Icon = new SymbolIcon(Symbol.Folder), Tag = "content" });
-
             // set the initial SelectedItem 
             foreach (NavigationViewItemBase item in NavView.MenuItems)
             {
-                if (item is NavigationViewItem && item.Tag.ToString() == "apps")
+                if (item is NavigationViewItem && item.Tag.ToString() == "home")
                 {
                     NavView.SelectedItem = item;
                     break;
@@ -58,10 +56,6 @@ namespace Encrypic2017.Views
                 {
                     case "Home":
                         ContentFrame.Navigate(typeof(InboxView));
-                        break;
-
-                    case "My Profile":
-                        ContentFrame.Navigate(typeof(ProfileView));
                         break;
 
                     case "Friends":
@@ -92,10 +86,6 @@ namespace Encrypic2017.Views
                         ContentFrame.Navigate(typeof(InboxView));
                         break;
 
-                    case "profile":
-                        ContentFrame.Navigate(typeof(ProfileView));
-                        break;
-
                     case "friends":
                         ContentFrame.Navigate(typeof(FriendsListView));
                         break;
@@ -105,6 +95,11 @@ namespace Encrypic2017.Views
                         break;
                 }
             }
+        }
+
+        private void logout_appbutton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginView));
         }
     }
 }
