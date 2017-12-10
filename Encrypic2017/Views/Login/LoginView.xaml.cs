@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Encrypic2017.Data;
+using Encrypic2017.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,14 +24,22 @@ namespace Encrypic2017.Views.Login
     /// </summary>
     public sealed partial class LoginView : Page
     {
+        UserModel um = new UserModel();
+        User user = new User("John", "Murphy", "john", "12345", "secret", "hey", DateTime.Now);
         public LoginView()
         {
             this.InitializeComponent();
+            this.createUser();
+        }
+
+        public async void createUser()
+        {
+            await um.postUser(user);
         }
 
         private void signin_button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MasterView));
+            this.createUser();
         }
 
         private void sign_up_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)

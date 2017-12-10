@@ -14,8 +14,20 @@ namespace Encrypic2017.Data
         private string username; // User's username (unique)
         private string password; // User's password
         private string secretkey; // User's secretkey (used to encrypt and decrypt messages)
-        private string[] friends; // An array of the user's friend's usernames
+        private string friends; // An array of the user's friend's usernames
         private DateTime createdAt; // Date of user creation
+
+
+        public User(string firstName, string surname, string username, string password, string secretkey, string friends, DateTime createdAt)
+        {
+            FirstName = firstName;
+            Surname = surname;
+            Username = username;
+            Password = password;
+            Secretkey = secretkey;
+            Friends = friends;
+            CreatedAt = createdAt;
+        }
 
         // Getters and setters for the variables above.
         public string FirstName
@@ -43,7 +55,7 @@ namespace Encrypic2017.Data
             get { return secretkey; }
             set { secretkey = value; }
         }
-        public string[] Friends
+        public string Friends
         {
             get { return friends; }
             set { friends = value; }

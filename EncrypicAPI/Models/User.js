@@ -23,7 +23,7 @@ const UserSchema = mongoose.Schema({
         type: String,
     },
     friends: {
-        type: Array,
+        type: String,
     },
     createdAt: {
         type: Date
