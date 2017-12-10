@@ -18,24 +18,12 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
+//set up users var for routing
+const users = require('./routes/users');
 
-const users = require('./routes/User');
-
+//port
 const port = 3000;
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(passport.initialize());
-app.use(passport.session());
-require('./config/passport')(passport);
-
-app.use('/users', users);
-
-app.get('/', (req, res) => {
-    res.send('Welcome to Encrypic');
-});
-
-//run the app and listen on the port we assigned
 app.listen(port, () => {
     console.log('Server started on port ' + port);
 });
