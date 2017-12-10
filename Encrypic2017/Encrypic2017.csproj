@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\File.cs" />
+    <Compile Include="Data\Message.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -128,34 +131,25 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\Fonts\Ubuntu-M.ttf" />
+    <Content Include="Assets\Fonts\Ubuntu-R.ttf" />
     <None Include="Encrypic2017_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\bg0.jpg" />
-    <Content Include="Assets\bg1.png" />
-    <Content Include="Assets\bg2.jpg" />
-    <Content Include="Assets\bg3.jpg" />
-    <Content Include="Assets\bg4.jpg" />
-    <Content Include="Assets\bg5.jpg" />
-    <Content Include="Assets\bg6.jpg" />
-    <Content Include="Assets\bg7.jpg" />
     <Content Include="Assets\bg8.jpg" />
     <Content Include="Assets\eplogo.png" />
     <Content Include="Assets\epsmlogo.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\loginbg2.png" />
-    <Content Include="Assets\profilebg.png" />
-    <Content Include="Assets\profilebg2.png" />
-    <Content Include="Assets\profilebg3.png" />
     <Content Include="Assets\profilepic.png" />
     <Content Include="Assets\samplepp.png" />
-    <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -205,7 +199,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
