@@ -6,6 +6,7 @@
 # Local documentation
 Documentation/
 backup/
+node_modules/
 
 # User-specific files
 *.suo
