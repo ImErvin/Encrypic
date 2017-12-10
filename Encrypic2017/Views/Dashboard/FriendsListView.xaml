@@ -7,44 +7,59 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="160"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <!-- Foreground element -->
+    <Grid>
         <ListView x:Name="friendsList"
-                  SelectionChanged="friendsList_SelectionChanged"
-                  Grid.Row="0"
-                  Height="160"
-                  ScrollViewer.HorizontalScrollMode="Enabled" 
-                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  ScrollViewer.VerticalScrollMode="Disabled"
-                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                  VerticalAlignment="Top">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+                  HorizontalAlignment="Center"
+                  Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="0 30 0 30">
+                    <Grid Margin="0 30 0 30">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"
+                                              MinWidth="150"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Ellipse Height="100" Width="100" Margin="0 -5 0 0" Grid.RowSpan="2">
+                        <Ellipse Height="100" Width="100" Margin="0 -5 0 0" 
+                                 Grid.RowSpan="2">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="../../Assets/profilepic.png" />
                             </Ellipse.Fill>
                         </Ellipse>
-                        <TextBlock Text="First Surname" Grid.Column="1" Grid.ColumnSpan="2" FontSize="40"/>
-                        <TextBlock Text="Friends Since: December 2017" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                        <TextBlock Text="December 2017" 
+                                   Grid.Column="1" 
+                                   Grid.Row="0"/>
+                        <TextBlock Text="Username" 
+                                   Grid.Column="1"
+                                   FontSize="40"
+                                   Margin="0 10 0 0"/>
+                        <Button Margin="10 0 0 0"
+                                Grid.Column="2"
+                                Grid.Row="0"
+                                VerticalAlignment="Top"
+                                Background="#522B47"
+                                Foreground="White"
+                                HorizontalAlignment="Right">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;"/>
+                        </Button>
+                        <Button Margin="10 0 0 0"
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                VerticalAlignment="Top"
+                                Background="#522B47"
+                                Foreground="White"
+                                HorizontalAlignment="Right">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F8;"/>
+                        </Button>
+                        <TextBlock Text="Message Count" 
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   FontSize="20"
+                                   Margin="0 0 0 0"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -59,7 +74,7 @@
             <x:String>Item 9</x:String>
             <x:String>Item 10</x:String>
         </ListView>
-        <Grid x:Name="changedetails_grid" Grid.Row="1">
+        <!--<Grid x:Name="changedetails_grid" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
@@ -93,7 +108,7 @@
             <TextBlock x:Name="selectedSurname"
                        Grid.Column="1"
                        Grid.Row="2"
-                       Margin="10 15 10 10"/>
+                       Margin="10 15 10 10" />
             <StackPanel Grid.Row="3"
                         Grid.Column="0">
                 <Button Margin="10 0 10 10"
@@ -108,9 +123,6 @@
                         Foreground="White">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F8;"/>
                 </Button>
-            </StackPanel>
-            
-            
-        </Grid>
+            </StackPanel>-->
     </Grid>
 </Page>

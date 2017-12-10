@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+
+        <Image Source="../../Assets/bg8.jpg" Stretch="UniformToFill"/>
         <NavigationView x:Name="NavView"
                         ItemInvoked="NavView_ItemInvoked"
                         SelectionChanged="NavView_SelectionChanged"
@@ -20,9 +22,11 @@
                 <NavigationViewItem Icon="Camera" Content="Camera" Tag="camera"/>
             </NavigationView.MenuItems>
 
+            
+            
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid Margin="24,20,0,-10">
+                    <Grid Margin="24,20,0,-15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
@@ -32,10 +36,11 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             DefaultLabelPosition="Right"
-                            Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
+                            Background="#1f1f1f">
                             <AppBarButton Label="Logout"
                                           x:Name="logout_appbutton"
-                                          Click="logout_appbutton_Click">
+                                          Click="logout_appbutton_Click"
+                                          Foreground="White">
                                 <AppBarButton.Icon>
                                     <FontIcon Glyph="&#xE7E8;"/>
                                 </AppBarButton.Icon>

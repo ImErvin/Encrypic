@@ -131,9 +131,21 @@
     <None Include="Encrypic2017_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bg0.jpg" />
+    <Content Include="Assets\bg1.png" />
+    <Content Include="Assets\bg2.jpg" />
+    <Content Include="Assets\bg3.jpg" />
+    <Content Include="Assets\bg4.jpg" />
+    <Content Include="Assets\bg5.jpg" />
+    <Content Include="Assets\bg6.jpg" />
+    <Content Include="Assets\bg7.jpg" />
+    <Content Include="Assets\bg8.jpg" />
     <Content Include="Assets\eplogo.png" />
     <Content Include="Assets\epsmlogo.png" />
     <Content Include="Assets\loginbg2.png" />
+    <Content Include="Assets\profilebg.png" />
+    <Content Include="Assets\profilebg2.png" />
+    <Content Include="Assets\profilebg3.png" />
     <Content Include="Assets\profilepic.png" />
     <Content Include="Assets\samplepp.png" />
     <Content Include="Properties\Default.rd.xml" />
