@@ -1,5 +1,5 @@
 ## Encrypic
-![alt text](https://github.com/ImErvin/Encrypic/blob/master/Encrypic/Assets/eplogo.png?raw=true "Encrypic Logo")
+![alt text](https://github.com/ImErvin/Encrypic/blob/master/Encrypic2017/Assets/eplogo.png?raw=true "Encrypic Logo")
 
 A Universal Windows Platform(UWP) application built using the MVVM design to easily build the application to any UWP device (phone, desktop, hololens etc.). This is a project for my Mobile Applications Development 3 module in college. The basic idea is to make use of the powerful MVVM design pattern and use my knowledge of RESTful APIs and Databases to create a full stack UWP application.
 
@@ -8,9 +8,7 @@ The idea behind Encrypic is to create an application that allows users to send e
 ### Features
     1. User Accounts
     2. Camera
-    3. Cloud Storage
-    4. Push Notifications
-    5. Toast Notifications
+    3. Fluent UI
 
 #### Credit
 Logo created using [Logomakr](https://logomakr.com/).
