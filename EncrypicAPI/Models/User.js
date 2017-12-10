@@ -31,3 +31,33 @@ const UserSchema = mongoose.Schema({
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
+
+// Find one user from the database using their ID
+module.exports.getUserById = function(id, callback){
+    User.findById(id, callback);
+}
+
+// Find one user from the database using their username
+module.exports.getUserByUsername = function(username, callback){
+    const query = {username: username}
+    User.findOne(query, callback);
+}
+
+// Create a user on the database
+module.exports.addUser = function(newUser, callback){
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if(err) throw err;
+            newUser.password = hash;
+            newUser.save(callback);
+        });
+    });
+}
+
+// Password compare for the user
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+    bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+        if(err) throw err;
+        callback(null, isMatch);
+    });
+};
