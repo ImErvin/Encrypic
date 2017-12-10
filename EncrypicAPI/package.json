@@ -1,0 +1,36 @@
+{
+  "name": "encrypicapi",
+  "version": "1.0.0",
+  "description": "Encrypic - Encrypted Messenger",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImErvin/Encrypic.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "RESTful",
+    "Mongoose",
+    "Heroku"
+  ],
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Ervin Mamutov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImErvin/Encrypic/issues"
+  },
+  "homepage": "https://github.com/ImErvin/Encrypic#readme"
+}
