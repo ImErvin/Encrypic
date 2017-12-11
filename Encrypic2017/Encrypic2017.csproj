@@ -99,6 +99,7 @@
     <Compile Include="Data\Authentication.cs" />
     <Compile Include="Data\File.cs" />
     <Compile Include="Data\Message.cs" />
+    <Compile Include="Data\Response.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -139,16 +140,36 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\background_images\bg1.jpg" />
+    <Content Include="Assets\background_images\bg10.jpg" />
+    <Content Include="Assets\background_images\bg11.jpg" />
+    <Content Include="Assets\background_images\bg12.jpg" />
+    <Content Include="Assets\background_images\bg13.jpg" />
+    <Content Include="Assets\background_images\bg14.jpg" />
+    <Content Include="Assets\background_images\bg15.jpg" />
+    <Content Include="Assets\background_images\bg16.jpg" />
+    <Content Include="Assets\background_images\bg17.jpg" />
+    <Content Include="Assets\background_images\bg18.jpg" />
+    <Content Include="Assets\background_images\bg19.jpg" />
+    <Content Include="Assets\background_images\bg2.jpg" />
+    <Content Include="Assets\background_images\bg20.jpg" />
+    <Content Include="Assets\background_images\bg21.jpg" />
+    <Content Include="Assets\background_images\bg3.jpg" />
+    <Content Include="Assets\background_images\bg4.jpg" />
+    <Content Include="Assets\background_images\bg5.jpg" />
+    <Content Include="Assets\background_images\bg6.jpg" />
+    <Content Include="Assets\background_images\bg7.jpg" />
+    <Content Include="Assets\background_images\bg8.jpg" />
+    <Content Include="Assets\background_images\bg9.jpg" />
+    <Content Include="Assets\background_images\loginBg.png" />
     <Content Include="Assets\Fonts\Ubuntu-M.ttf" />
     <Content Include="Assets\Fonts\Ubuntu-R.ttf" />
     <None Include="Encrypic2017_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\bg8.jpg" />
     <Content Include="Assets\eplogo.png" />
     <Content Include="Assets\epsmlogo.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\loginbg2.png" />
     <Content Include="Assets\profilepic.png" />
     <Content Include="Assets\samplepp.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

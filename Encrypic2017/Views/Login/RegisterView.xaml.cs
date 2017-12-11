@@ -1,4 +1,7 @@
-﻿using Encrypic2017.ViewModels;
+﻿using Encrypic2017.Data;
+using Encrypic2017.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +27,7 @@ namespace Encrypic2017.Views.Login
     public sealed partial class RegisterView : Page
     {
         UserViewModel UVM;
+        Response res = new Response();
 
         public RegisterView()
         {
@@ -34,8 +38,10 @@ namespace Encrypic2017.Views.Login
 
         private async void singup_button_Click(object sender, RoutedEventArgs e)
         {
-
-            errormessage.Text = Convert.ToString(await UVM.registerUser());
+            res = await UVM.registerUser();
+            var data = (JObject)JsonConvert.DeserializeObject(res.data);
+            string msg = data["msg"].Value<string>();
+            errormessage.Text = msg;
             errormessage.Visibility = Visibility.Visible;
             
            //Frame.Navigate(typeof(LoginView));

@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
 
-        <Image Source="../../Assets/bg8.jpg" Stretch="UniformToFill"/>
+        <Image x:Name="backgroundImage" Source="{x:Bind bitmapImage}" Opacity=".7" Stretch="UniformToFill"/>
         <NavigationView x:Name="NavView"
                         ItemInvoked="NavView_ItemInvoked"
                         SelectionChanged="NavView_SelectionChanged"
@@ -31,6 +31,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        
                         <Image Source="../../Assets/eplogo.png"></Image>
                         <CommandBar Grid.Column="1"
                             HorizontalAlignment="Right"

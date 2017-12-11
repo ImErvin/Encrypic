@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Image Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Image Stretch="Fill" Source="../../Assets/background_images/loginBg.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
         <Frame x:Name="ContentFrame"/>
 

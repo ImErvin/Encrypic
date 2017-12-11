@@ -17,6 +17,8 @@ namespace Encrypic2017.ViewModels
 
         public Authentication auth = new Authentication();
 
+        public Response res = new Response();
+
         public UserViewModel(User user = null) : base(user) {
             
         }
@@ -57,11 +59,13 @@ namespace Encrypic2017.ViewModels
             set { SetProperty(This.createdAt, value, () => This.createdAt = value); }
         }
 
-        public async Task<string> registerUser()
+        public async Task<Response> registerUser()
         {
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                return "Please fill in all the details";
+                res.data = "{'msg':'Please fill in all the details'}";
+                res.status = "Bad Request";
+                return res;
             }
             else
             {
@@ -77,11 +81,20 @@ namespace Encrypic2017.ViewModels
             }
         }
 
-        public async Task<string> authenticateUser()
+        public async Task<Response> authenticateUser()
         {
-            auth.username = username;
-            auth.password = password;
-            return await um.authenticateUser(auth);
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                res.data = "{'msg':'Please fill in all the details'}";
+                res.status = "Bad Request";
+                return res;
+            }
+            else
+            {
+                auth.username = username;
+                auth.password = password;
+                return await um.authenticateUser(auth);
+            }
         }
     }
 }

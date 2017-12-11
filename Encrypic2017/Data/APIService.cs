@@ -22,7 +22,7 @@ namespace Encrypic2017.Data
 
         const string ServerUrl = "http://127.0.0.1:3000/users"; //specify your server url
 
-        public string response;
+        public Response res = new Response();
 
         public void ClientHeaderInfo(HttpClient client)
         {
@@ -32,7 +32,7 @@ namespace Encrypic2017.Data
             client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
         }
 
-        public virtual async Task<string> postUser(User user)
+        public virtual async Task<Response> postUser(User user)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
             var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -43,27 +43,31 @@ namespace Encrypic2017.Data
                 try
                 {
                     var result = await client.PostAsync(ServerUrl + "/postUser", content);
-                    var resposne = Convert.ToString(await result.Content.ReadAsStringAsync());
-                    await new MessageDialog(await result.Content.ReadAsStringAsync()).ShowAsync();
+
+                    res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
+                    res.status = Convert.ToString(result.StatusCode);
+
                     if (result.IsSuccessStatusCode)
                     {
-                        return resposne;
+                        return res;
                     }
                     else
                     {
-                        return resposne;
+                        return res;
                     }
                 }
                 catch (Exception ex)
                 {
                     await new MessageDialog(ex.Message).ShowAsync();
-                    return ex.Message;
+                    res.data = "{'msg':'There was an error connecting to backend - Try again later'}";
+                    res.status = "Internal Server Error";
+                    return res;
                 }
             }
 
         }
 
-        public virtual async Task<String> authenticateUser(Authentication auth)
+        public virtual async Task<Response> authenticateUser(Authentication auth)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
             var content = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
@@ -74,20 +78,25 @@ namespace Encrypic2017.Data
                 try
                 {
                     HttpResponseMessage result = await client.PostAsync(ServerUrl + "/authenticate", content);
-                    await new MessageDialog(await result.Content.ReadAsStringAsync()).ShowAsync();
+
+                    res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
+                    res.status = Convert.ToString(result.StatusCode);
+
                     if (result.IsSuccessStatusCode)
                     {
-                        return await result.Content.ReadAsStringAsync();
+                        return res;
                     }
                     else
                     {
-                        return await result.Content.ReadAsStringAsync();
+                        return res;
                     }
                 }
                 catch (Exception ex)
                 {
                     await new MessageDialog(ex.Message).ShowAsync();
-                    return ex.Message;
+                    res.data = "{'msg':'There was an error connecting to backend - Try again later'}";
+                    res.status = "Internal Server Error";
+                    return res;
                 }
             }
 

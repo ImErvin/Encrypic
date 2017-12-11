@@ -1,4 +1,7 @@
-﻿using Encrypic2017.ViewModels;
+﻿using Encrypic2017.Data;
+using Encrypic2017.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,18 +27,30 @@ namespace Encrypic2017.Views.Login
     public sealed partial class LoginView : Page
     {
         UserViewModel UVM;
+
+        Response res = new Response();
         public LoginView()
         {
             this.InitializeComponent();
             UVM = new UserViewModel();
         }
 
-        private void signin_button_Click(object sender, RoutedEventArgs e)
+        private async void signin_button_Click(object sender, RoutedEventArgs e)
         {
 
-            UVM.authenticateUser();
+            res = await UVM.authenticateUser();
 
-            Frame.Navigate(typeof(MasterView));
+            if(res.status == "OK")
+            {
+                Frame.Navigate(typeof(MasterView));
+            }
+            else
+            {
+                var data = (JObject)JsonConvert.DeserializeObject(res.data);
+                string msg = data["msg"].Value<string>();
+                errormessage.Text = msg;
+                errormessage.Visibility = Visibility.Visible;
+            }
         }
 
         private void sign_up_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)

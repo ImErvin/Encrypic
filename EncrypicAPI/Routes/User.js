@@ -12,6 +12,7 @@ router.post('/postUser', (req,res,next)=>{
         if(err) throw err;
 
         if(user){
+            res.status(409);
             return res.json({success: false, msg: 'Username already exists'});
         }
 
@@ -47,6 +48,7 @@ router.post('/authenticate', (req, res, next) => {
         if(err) throw err;
 
         if(!user){
+            res.status(404);
             return res.json({success: false, msg: 'Username not found'});
         }
 
@@ -68,6 +70,7 @@ router.post('/authenticate', (req, res, next) => {
                     }
                 });
             }else{
+                res.status(422);
                 return res.json({success: false, msg: 'Wrong password'});
             }
         });

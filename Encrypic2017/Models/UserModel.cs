@@ -21,12 +21,12 @@ namespace Encrypic2017.Models
             
         }
 
-        public async Task<string> postUser(User user)
+        public async Task<Response> postUser(User user)
         {
             return await apiService.postUser(user);
         }
 
-        public async Task<string> authenticateUser(Authentication auth)
+        public async Task<Response> authenticateUser(Authentication auth)
         {
             return await apiService.authenticateUser(auth);
         }

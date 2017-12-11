@@ -19,8 +19,8 @@
         <!-- Foreground element -->
         <ListView x:Name="ForegroundElement" 
                   Visibility="Visible"
-                  Grid.Row="1"
-                  HorizontalAlignment="Center"
+                  HorizontalAlignment="Stretch"
+                  Margin="50"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicElementMediumBrush }">
                 <ListView.ItemTemplate>
                     <DataTemplate>
