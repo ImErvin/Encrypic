@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic2017.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,15 +23,21 @@ namespace Encrypic2017.Views.Login
     /// </summary>
     public sealed partial class RegisterView : Page
     {
+        UserViewModel UVM;
+
         public RegisterView()
         {
             this.InitializeComponent();
+            UVM = new UserViewModel();
         }
 
 
         private void singup_button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(LoginView));
+
+           UVM.registerUser();
+            
+            //Frame.Navigate(typeof(LoginView));
         }
 
         private void signin_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)

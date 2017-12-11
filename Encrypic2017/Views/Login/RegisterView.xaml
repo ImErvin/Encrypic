@@ -5,21 +5,28 @@
     xmlns:local="using:Encrypic2017.Views.Login"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m="using:Encrypic2017.ViewModels"
+    xmlns:m1="using:Encrypic2017.Data"
     mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition />
         </TransitionCollection>
     </Page.Transitions>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="440"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="280"/>
         </Grid.ColumnDefinitions>
-
-        <Image Grid.RowSpan="2" Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="errormessage"
+                       Foreground="Red" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10 0 0 0"
+                       Text="Error Message"
+                       Visibility="Collapsed"/>
         <StackPanel HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
                     Height="440"
@@ -44,19 +51,29 @@
                     <ColumnDefinition Width="140" />
                     <ColumnDefinition Width="140" />
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Column="0"
+                <TextBox x:Name="firstName"
+                         Grid.Column="0"
                          Margin="10 10 5 10"
-                         PlaceholderText="First Name"></TextBox>
-                <TextBox Grid.Column="1"
+                         PlaceholderText="First Name"
+                         Text="{x:Bind UVM.firstName, Mode=TwoWay}"></TextBox>
+                <TextBox x:Name="surname"
+                         Grid.Column="1"
                          Margin="5 10 10 10"
-                         PlaceholderText="Surname"></TextBox>
+                         PlaceholderText="Surname"
+                         Text="{x:Bind UVM.surname, Mode=TwoWay}"></TextBox>
             </Grid>
-            <TextBox Margin="10 0 10 10"
-                     PlaceholderText="Username"></TextBox>
-            <PasswordBox Margin="10 0 10 10"
-                     PlaceholderText="Password"></PasswordBox>
-            <PasswordBox Margin="10 0 10 10"
-                     PlaceholderText="Confirm Password"></PasswordBox>
+            <TextBox x:Name="username"
+                     Margin="10 0 10 10"
+                     PlaceholderText="Username"
+                     Text="{x:Bind UVM.username, Mode=TwoWay}"></TextBox>
+            <PasswordBox x:Name="password"
+                         Margin="10 0 10 10"
+                         PlaceholderText="Password"
+                         Password="{x:Bind UVM.password, Mode=TwoWay}"></PasswordBox>
+            <!--<PasswordBox x:Name="confirmPassword"
+                         Margin="10 0 10 10"
+                         PlaceholderText="Confirm Password"
+                         Password="{x:Bind UVM.ConfirmPassword, Mode=OneWay}"></PasswordBox>-->
             <Button x:Name="singup_button"
                     Margin="10 0 10 10"
                     Background="#522B47"

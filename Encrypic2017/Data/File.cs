@@ -9,13 +9,7 @@ namespace Encrypic2017.Data
     class File
     {
         // Encapsulated variables that make up a file object.
-        private string encryptedB64;
+        public string encryptedB64 { get; set; } // encrypted base64 string
 
-        // Getters and setters for the variable above.
-        public string EncryptedB64
-        {
-            get { return encryptedB64; }
-            set { encryptedB64 = value; }
-        }
     }
 }

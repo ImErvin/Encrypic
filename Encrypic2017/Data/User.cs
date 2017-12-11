@@ -8,63 +8,19 @@ namespace Encrypic2017.Data
 {
     class User
     {
+        public User()
+        {
+
+        }
+
         // Encapsulated variables that make up a user object.
-        private string firstName; // User's first name
-        private string surname; // User's surname
-        private string username; // User's username (unique)
-        private string password; // User's password
-        private string secretkey; // User's secretkey (used to encrypt and decrypt messages)
-        private string friends; // An array of the user's friend's usernames
-        private DateTime createdAt; // Date of user creation
-
-
-        public User(string firstName, string surname, string username, string password, string secretkey, string friends, DateTime createdAt)
-        {
-            FirstName = firstName;
-            Surname = surname;
-            Username = username;
-            Password = password;
-            Secretkey = secretkey;
-            Friends = friends;
-            CreatedAt = createdAt;
-        }
-
-        // Getters and setters for the variables above.
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-        public string Surname
-        {
-            get { return surname; }
-            set { surname = value; }
-        }
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-        public string Secretkey
-        {
-            get { return secretkey; }
-            set { secretkey = value; }
-        }
-        public string Friends
-        {
-            get { return friends; }
-            set { friends = value; }
-        }
-        public DateTime CreatedAt
-        {
-            get { return createdAt; }
-            set { createdAt = value; }
-        }
+        public string firstName { get; set; } // User's first name
+        public string surname { get; set; } // User's surname
+        public string username { get; set; } // User's username (unique)
+        public string password { get; set; } // User's password
+        public string secretkey { get; set; } // User's secretkey (used to encrypt and decrypt messages)
+        public string friends { get; set; } // An array of the user's friend's usernames
+        public DateTime createdAt { get; set; } // Date of user creation
 
     }
 }

@@ -20,21 +20,12 @@ namespace Encrypic2017.Views.Login
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoginView : Page
+    public sealed partial class MasterAuthView : Page
     {
-        public LoginView()
+        public MasterAuthView()
         {
             this.InitializeComponent();
-        }
-
-        private void signin_button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MasterView));
-        }
-
-        private void sign_up_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
-        {
-            Frame.Navigate(typeof(RegisterView));
+            ContentFrame.Navigate(typeof(LoginView));
         }
     }
 }
