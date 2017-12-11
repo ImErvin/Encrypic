@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic2017.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,13 +23,18 @@ namespace Encrypic2017.Views.Login
     /// </summary>
     public sealed partial class LoginView : Page
     {
+        UserViewModel UVM;
         public LoginView()
         {
             this.InitializeComponent();
+            UVM = new UserViewModel();
         }
 
         private void signin_button_Click(object sender, RoutedEventArgs e)
         {
+
+            UVM.authenticateUser();
+
             Frame.Navigate(typeof(MasterView));
         }
 

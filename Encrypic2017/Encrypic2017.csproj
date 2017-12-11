@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\APIService.cs" />
+    <Compile Include="Data\Authentication.cs" />
     <Compile Include="Data\File.cs" />
     <Compile Include="Data\Message.cs" />
     <Compile Include="Data\User.cs" />

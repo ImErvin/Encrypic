@@ -32,12 +32,13 @@ namespace Encrypic2017.Views.Login
         }
 
 
-        private void singup_button_Click(object sender, RoutedEventArgs e)
+        private async void singup_button_Click(object sender, RoutedEventArgs e)
         {
 
-           UVM.registerUser();
+            errormessage.Text = Convert.ToString(await UVM.registerUser());
+            errormessage.Visibility = Visibility.Visible;
             
-            //Frame.Navigate(typeof(LoginView));
+           //Frame.Navigate(typeof(LoginView));
         }
 
         private void signin_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)

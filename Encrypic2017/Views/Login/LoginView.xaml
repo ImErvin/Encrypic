@@ -37,19 +37,21 @@
                        FontSize="30"
                        Margin="10"
                        Text="Sign in"/>
-            <TextBlock Foreground="#d62839" 
+            <TextBlock x:Name="errormessage"
+                       Foreground="Crimson" 
                        FontFamily="Segoe UI Light" 
                        FontSize="15"
-                       Margin="10, -5, 0, 0"
+                       Margin="10 0 0 0"
                        Text="Error Message"
-                       Visibility="Collapsed"
-                       x:Name="error_message"/>
+                       Visibility="Collapsed"/>
             <TextBox Margin="10 10 10 10"
                      PlaceholderText="Username"
-                     x:Name="username_tbox"/>
+                     x:Name="username_tbox"
+                     Text="{x:Bind UVM.username, Mode=TwoWay}"/>
             <PasswordBox Margin="10 10 10 10"
                          PlaceholderText="Password"
-                         x:Name="password_tbox"/>
+                         x:Name="password_tbox"
+                         Password="{x:Bind UVM.password, Mode=TwoWay}"/>
             <Button Margin="10 0 10 10"
                     Background="#522B47"
                     Foreground="White"

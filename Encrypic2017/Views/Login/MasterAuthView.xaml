@@ -8,14 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-        
-        <Image Grid.RowSpan="2" Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <Frame Grid.RowSpan="2" x:Name="ContentFrame"/>
+        <Image Stretch="Fill" Source="../../Assets/loginbg2.png" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+        <Frame x:Name="ContentFrame"/>
 
     </Grid>
 </Page>

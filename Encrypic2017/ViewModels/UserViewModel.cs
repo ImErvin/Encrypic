@@ -15,6 +15,8 @@ namespace Encrypic2017.ViewModels
 
         public User newUser = new User();
 
+        public Authentication auth = new Authentication();
+
         public UserViewModel(User user = null) : base(user) {
             
         }
@@ -55,18 +57,31 @@ namespace Encrypic2017.ViewModels
             set { SetProperty(This.createdAt, value, () => This.createdAt = value); }
         }
 
-        public async void registerUser()
+        public async Task<string> registerUser()
         {
-            newUser.firstName = firstName;
-            newUser.surname = surname;
-            newUser.username = username;
-            newUser.password = password;
-            newUser.secretkey = firstName+""+surname;
-            newUser.friends = "No Friends";
-            newUser.createdAt = DateTime.Now;
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return "Please fill in all the details";
+            }
+            else
+            {
+                newUser.firstName = firstName;
+                newUser.surname = surname;
+                newUser.username = username;
+                newUser.password = password;
+                newUser.secretkey = firstName + "" + surname;
+                newUser.friends = "No Friends";
+                newUser.createdAt = DateTime.Now;
 
-            um.postUser(newUser);
-            await new MessageDialog(password).ShowAsync();
+                return await um.postUser(newUser);
+            }
+        }
+
+        public async Task<string> authenticateUser()
+        {
+            auth.username = username;
+            auth.password = password;
+            return await um.authenticateUser(auth);
         }
     }
 }

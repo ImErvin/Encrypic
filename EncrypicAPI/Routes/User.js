@@ -8,28 +8,71 @@ const User = require('../Models/User');
 
 router.post('/postUser', (req,res,next)=>{
 
-    console.log(req.body);
-    let newUser = new User({
-        firstName: req.body.firstName,
-        surname: req.body.surname,
-        username: req.body.username,
-        password: req.body.password,
-        friends: req.body.friends,
-        createdAt: req.body.createdAt
+    User.getUserByUsername(req.body.username, (err, user) => {
+        if(err) throw err;
+
+        if(user){
+            return res.json({success: false, msg: 'Username already exists'});
+        }
+
+        let newUser = new User({
+            firstName: req.body.firstName,
+            surname: req.body.surname,
+            username: req.body.username,
+            password: req.body.password,
+            friends: req.body.friends,
+            createdAt: req.body.createdAt
+        });
+    
+        User.addUser(newUser, (err, user) => {
+            if(err){
+                res.status(500);
+                res.json({success: false, msg: 'Registration Error'});
+            } else{
+                res.status(200);
+                res.json({success: true, msg: 'Registration Success'});
+            }
+        });
     });
 
-    User.addUser(newUser, (err, user) => {
-        if(err){
-            res.status(500);
-            console.log("woops");
-            res.json({success: false, msg: 'Registration Error'});
-        } else{
-            res.status(200);
-            console.log("added " + newUser)
-            res.json({success: true, msg: 'Registration Success'});
-        }
-    });
+    
 })
+
+//authenticate route
+router.post('/authenticate', (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    User.getUserByUsername(username, (err, user) => {
+        if(err) throw err;
+
+        if(!user){
+            return res.json({success: false, msg: 'Username not found'});
+        }
+
+        User.comparePassword(password, user.password, (err, isMatch) => {
+            if(err) throw err;
+            
+            //if passwords do match
+            if(isMatch){
+                res.json({
+                    success: true,
+                    user: {
+                        id : user._id,
+                        firstName: user.firstName,
+                        surname: user.surname,
+                        username: user.username,
+                        secretkey: user.secretkey,
+                        friends: user.friends,
+                        createdAt: user.createdAt
+                    }
+                });
+            }else{
+                return res.json({success: false, msg: 'Wrong password'});
+            }
+        });
+    });
+});
 
 router.get('/users', (req,res,next)=>{
 

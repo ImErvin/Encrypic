@@ -8,11 +8,6 @@ namespace Encrypic2017.Data
 {
     class User
     {
-        public User()
-        {
-
-        }
-
         // Encapsulated variables that make up a user object.
         public string firstName { get; set; } // User's first name
         public string surname { get; set; } // User's surname
@@ -21,6 +16,11 @@ namespace Encrypic2017.Data
         public string secretkey { get; set; } // User's secretkey (used to encrypt and decrypt messages)
         public string friends { get; set; } // An array of the user's friend's usernames
         public DateTime createdAt { get; set; } // Date of user creation
+
+        public User()
+        {
+
+        }
 
     }
 }

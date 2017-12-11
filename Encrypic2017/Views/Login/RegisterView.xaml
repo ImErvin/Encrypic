@@ -20,13 +20,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="280"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="errormessage"
-                       Foreground="Red" 
-                       FontFamily="Segoe UI Light" 
-                       FontSize="15"
-                       Margin="10 0 0 0"
-                       Text="Error Message"
-                       Visibility="Collapsed"/>
         <StackPanel HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
                     Height="440"
@@ -46,6 +39,13 @@
                        FontSize="30"
                        Margin="10"
                        Text="Sign up"/>
+            <TextBlock x:Name="errormessage"
+                       Foreground="Crimson" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10 0 0 0"
+                       Text="Error Message"
+                       Visibility="Collapsed"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="140" />
@@ -105,7 +105,7 @@
                 </TextBlock>
             </Grid>
             <TextBlock HorizontalAlignment="Center"
-                       Margin="10 15 10 10"
+                       Margin="10 50 10 10"
                        FontFamily="Segoe UI Light" 
                        FontSize="12"
                        Foreground="Gray"
