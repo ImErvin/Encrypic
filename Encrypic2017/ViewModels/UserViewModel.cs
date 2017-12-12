@@ -2,10 +2,14 @@
 using Encrypic2017.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Encrypic2017.ViewModels
 {
@@ -62,6 +66,11 @@ namespace Encrypic2017.ViewModels
             get { return This.createdAt; }
             set { SetProperty(This.createdAt, value, () => This.createdAt = value); }
         }
+        public string profilePicture
+        {
+            get { return This.profilePicture; }
+            set { SetProperty(This.profilePicture, value, () => This.profilePicture = value); }
+        }
 
         public async Task<Response> registerUser()
         {
@@ -80,11 +89,12 @@ namespace Encrypic2017.ViewModels
                 newUser.secretkey = firstName + "" + surname;
                 newUser.friends = "No Friends";
                 newUser.createdAt = DateTime.Now;
+                newUser.profilePicture = await uploadImage();
 
                 return await um.postUser(newUser);
             }
         }
-
+        
         public async Task<Response> authenticateUser()
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -104,6 +114,34 @@ namespace Encrypic2017.ViewModels
         public async void searchUser()
         {
             await um.searchUsers(query);
+        }
+
+        public async Task<string> uploadImage()
+        {
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".png");
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                using (var stream = await file.OpenStreamForReadAsync())
+                {
+                    using (var memory = new MemoryStream())
+                    {
+                        await stream.CopyToAsync(memory);
+                        byte[] array = memory.ToArray();
+                        string result = Convert.ToBase64String(array);
+                        await new MessageDialog(result).ShowAsync();
+                        return result;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

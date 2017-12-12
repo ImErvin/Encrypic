@@ -31,9 +31,11 @@ router.post('/postUser', (req, res, next) => {
             username: req.body.username,
             password: req.body.password,
             friends: req.body.friends,
-            createdAt: req.body.createdAt
+            createdAt: req.body.createdAt,
+            profilePicture: req.body.profilePicture
         });
 
+        console.log(req.body.profilePicture);
         User.addUser(newUser, (err, user) => {
             if (err) {
                 res.status(500);
@@ -75,7 +77,8 @@ router.post('/authenticate', (req, res, next) => {
                         username: user.username,
                         secretkey: user.secretkey,
                         friends: user.friends,
-                        createdAt: user.createdAt
+                        createdAt: user.createdAt,
+                        profilePicture: user.profilePicture
                     }
                 });
             } else {

@@ -28,6 +28,9 @@ const UserSchema = mongoose.Schema({
     },
     createdAt: {
         type: Date
+    },
+    profilePicture:{
+        type: String
     }
 });
 

@@ -16,6 +16,7 @@ namespace Encrypic2017.Data
         public string secretkey { get; set; } // User's secretkey (used to encrypt and decrypt messages)
         public string friends { get; set; } // An array of the user's friend's usernames
         public DateTime createdAt { get; set; } // Date of user creation
+        public string profilePicture { get; set; } // Users profile picture base64 string
 
         public User()
         {

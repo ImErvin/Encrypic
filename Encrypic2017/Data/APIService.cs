@@ -102,7 +102,7 @@ namespace Encrypic2017.Data
 
         }
 
-        public virtual async Task<Response> searchUser(string query)
+        public virtual async Task<Response> searchUsers(string query)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
             var content = new StringContent(JsonConvert.SerializeObject(query), Encoding.UTF8, "application/json");
