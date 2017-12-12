@@ -12,11 +12,12 @@
         <StackPanel>
             <SearchBox x:Name="searchUsers"
                        PlaceholderText="Search Users" 
+                       KeyDown="searchUsers_KeyDown"
                        QueryText="{x:Bind UVM.searchQuery.query, Mode=TwoWay}" 
                        QuerySubmitted="searchUsers_QuerySubmitted"></SearchBox>
             <ListView x:Name="friendsList"
                       HorizontalAlignment="Stretch"
-                      Visibility="Collapsed"
+                      Visibility="Visible"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                       ScrollViewer.HorizontalScrollMode="Enabled"
                       ScrollViewer.VerticalScrollMode="Disabled">
@@ -79,7 +80,7 @@
             </ListView>
             <StackPanel x:Name="noResults"
                         Margin="20"
-                        Visibility="Visible"
+                        Visibility="Collapsed"
                         Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
                 <TextBlock Foreground="#1f1f1f" 
                        FontFamily="Segoe UI Light" 

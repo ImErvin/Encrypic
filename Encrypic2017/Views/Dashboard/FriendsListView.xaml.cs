@@ -60,5 +60,11 @@ namespace Encrypic2017.Views.Dashboard
             var listView = (ListView)sender;
             //listView.ItemsSource = searchR;
         }
+
+        private void searchUsers_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            noResults.Visibility = Visibility.Visible;
+            friendsList.Visibility = Visibility.Collapsed;
+        }
     }
 }
