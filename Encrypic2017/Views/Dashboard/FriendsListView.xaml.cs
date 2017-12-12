@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic2017.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,16 @@ namespace Encrypic2017.Views.Dashboard
     /// </summary>
     public sealed partial class FriendsListView : Page
     {
+        UserViewModel UVM;
         public FriendsListView()
         {
             this.InitializeComponent();
+            UVM = new UserViewModel();
         }
 
+        private void searchUsers_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
+        {
+            UVM.searchUser();
+        }
     }
 }

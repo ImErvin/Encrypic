@@ -31,6 +31,9 @@ namespace Encrypic2017.Models
             return await apiService.authenticateUser(auth);
         }
 
-
+        public async Task<Response> searchUsers(string query)
+        {
+            return await apiService.authenticateUser(query);
+        }
     }
 }

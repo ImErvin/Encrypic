@@ -19,6 +19,10 @@ namespace Encrypic2017.ViewModels
 
         public Response res = new Response();
 
+        public List<User> searchResults = new List<User>();
+
+        public string query { get; set; }
+
         public UserViewModel(User user = null) : base(user) {
             
         }
@@ -95,6 +99,11 @@ namespace Encrypic2017.ViewModels
                 auth.password = password;
                 return await um.authenticateUser(auth);
             }
+        }
+
+        public async void searchUser()
+        {
+            await um.searchUsers(query);
         }
     }
 }

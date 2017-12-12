@@ -6,14 +6,23 @@ const config = require('../Config/Database');
 
 const User = require('../Models/User');
 
-router.post('/postUser', (req,res,next)=>{
+router.get('/getUsers', (req, res, next) => {
+    
+        User.getAllUsers(function (err, users) {
+            if (err) return res.send(err)
+    
+            return res.json(users);
+        });
+    });
+
+router.post('/postUser', (req, res, next) => {
 
     User.getUserByUsername(req.body.username, (err, user) => {
-        if(err) throw err;
+        if (err) throw err;
 
-        if(user){
+        if (user) {
             res.status(409);
-            return res.json({success: false, msg: 'Username already exists'});
+            return res.json({ success: false, msg: 'Username already exists' });
         }
 
         let newUser = new User({
@@ -24,19 +33,19 @@ router.post('/postUser', (req,res,next)=>{
             friends: req.body.friends,
             createdAt: req.body.createdAt
         });
-    
+
         User.addUser(newUser, (err, user) => {
-            if(err){
+            if (err) {
                 res.status(500);
-                res.json({success: false, msg: 'Registration Error'});
-            } else{
+                res.json({ success: false, msg: 'Registration Error' });
+            } else {
                 res.status(200);
-                res.json({success: true, msg: 'Registration Success'});
+                res.json({ success: true, msg: 'Registration Success' });
             }
         });
     });
 
-    
+
 })
 
 //authenticate route
@@ -45,22 +54,22 @@ router.post('/authenticate', (req, res, next) => {
     const password = req.body.password;
 
     User.getUserByUsername(username, (err, user) => {
-        if(err) throw err;
+        if (err) throw err;
 
-        if(!user){
+        if (!user) {
             res.status(404);
-            return res.json({success: false, msg: 'Username not found'});
+            return res.json({ success: false, msg: 'Username not found' });
         }
 
         User.comparePassword(password, user.password, (err, isMatch) => {
-            if(err) throw err;
-            
+            if (err) throw err;
+
             //if passwords do match
-            if(isMatch){
+            if (isMatch) {
                 res.json({
                     success: true,
                     user: {
-                        id : user._id,
+                        id: user._id,
                         firstName: user.firstName,
                         surname: user.surname,
                         username: user.username,
@@ -69,44 +78,23 @@ router.post('/authenticate', (req, res, next) => {
                         createdAt: user.createdAt
                     }
                 });
-            }else{
+            } else {
                 res.status(422);
-                return res.json({success: false, msg: 'Wrong password'});
+                return res.json({ success: false, msg: 'Wrong password' });
             }
         });
     });
 });
 
-router.get('/users', (req,res,next)=>{
+router.get('/search', (req, res, next) => {
+    var query = {
+        "username": new RegExp(req.body.query)
+    };
+    User.searchUsers(query, function (err, users) {
+        if (err) return res.send(err)
 
-    console.log("HERE");
-
-    User.find(function(error, users) {
-                if (error) return res.send(error);
-
-                return res.json(users);
-        });
-        // console.log(req.body);
-        // let newUser = new User({
-        //     firstName: req.body.FirstName,
-        //     surname: req.body.Surname,
-        //     username: req.body.Username,
-        //     password: req.body.Password,
-        //     friends: req.body.Friends,
-        //     createdAt: req.body.CreatedAt
-        // });
-    
-        // User.addUser(newUser, (err, user) => {
-        //     if(err){
-        //         res.status(500);
-        //         console.log("woops");
-        //         res.json({success: false, msg: 'Registration Error'});
-        //     } else{
-        //         res.status(200);
-        //         console.log("added " + newUser)
-        //         res.json({success: true, msg: 'Registration Success'});
-        //     }
-        // });
-    })
+        return res.json(users);
+    });
+});
 
 module.exports = router;

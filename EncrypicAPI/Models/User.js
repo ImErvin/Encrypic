@@ -17,7 +17,8 @@ const UserSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        select: false
     },
     secretket: {
         type: String,
@@ -32,15 +33,10 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
-// Find one user from the database using their ID
-module.exports.getUserById = function(id, callback){
-    User.findById(id, callback);
-}
-
 // Find one user from the database using their username
 module.exports.getUserByUsername = function(username, callback){
     const query = {username: username}
-    User.findOne(query, callback);
+    User.findOne(query, callback).select('+password');
 }
 
 // Create a user on the database
@@ -60,4 +56,29 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
         if(err) throw err;
         callback(null, isMatch);
     });
-};
+}
+
+// Return all users
+module.exports.getAllUsers = function(callback){
+    User.find(function(err, users) {
+        if (err) throw err;
+
+        callback(users);
+});
+}
+
+
+module.exports.searchUsers = function(query, callback){
+    User.find(query)
+    .exec(function(err, result) {
+        if (err) throw err;
+
+        callback(result);
+    });
+     
+    // User.find(query, function(err, result) {
+    //     if (err) throw err;
+
+    //     callback(result);
+}
+;
