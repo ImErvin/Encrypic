@@ -89,13 +89,15 @@ router.post('/authenticate', (req, res, next) => {
     });
 });
 
-router.get('/search', (req, res, next) => {
+router.post('/search', (req, res, next) => {
+
+    console.log(req.body);
     var query = {
         "username": new RegExp(req.body.query)
     };
     User.searchUsers(query, function (err, users) {
         if (err) return res.send(err)
-
+        res.status(200)
         return res.json(users);
     });
 });

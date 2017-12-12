@@ -1,6 +1,9 @@
-﻿using Encrypic2017.ViewModels;
+﻿using Encrypic2017.Data;
+using Encrypic2017.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -24,15 +27,38 @@ namespace Encrypic2017.Views.Dashboard
     public sealed partial class FriendsListView : Page
     {
         UserViewModel UVM;
+        Response res = new Response();
         public FriendsListView()
         {
             this.InitializeComponent();
             UVM = new UserViewModel();
         }
 
-        private void searchUsers_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
+        private async void searchUsers_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
         {
-            UVM.searchUser();
+            Response res = await UVM.searchUser();
+            Debug.WriteLine(res.status);
+            
+            if(res.status == "OK")
+            {
+                if(UVM.searchResults.Count() == 0)
+                {
+                    noResults.Visibility = Visibility.Visible;
+                    searchResults.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    noResults.Visibility = Visibility.Collapsed;
+                    searchResults.Visibility = Visibility.Visible;
+                }
+                
+            }
+        }
+
+        private void searchResults_Loaded(object sender, RoutedEventArgs e)
+        {
+            var listView = (ListView)sender;
+            //listView.ItemsSource = searchR;
         }
     }
 }

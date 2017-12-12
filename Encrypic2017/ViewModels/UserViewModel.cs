@@ -1,11 +1,15 @@
 ﻿using Encrypic2017.Data;
 using Encrypic2017.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
@@ -23,9 +27,9 @@ namespace Encrypic2017.ViewModels
 
         public Response res = new Response();
 
-        public List<User> searchResults = new List<User>();
+        public ObservableCollection<User> searchResults = new ObservableCollection<User>();
 
-        public string query { get; set; }
+        public Search searchQuery = new Search();
 
         public UserViewModel(User user = null) : base(user) {
             
@@ -61,7 +65,7 @@ namespace Encrypic2017.ViewModels
             get { return This.password; }
             set { SetProperty(This.friends, value, () => This.friends = value); }
         }
-        public DateTime createdAt
+        public string createdAt
         {
             get { return This.createdAt; }
             set { SetProperty(This.createdAt, value, () => This.createdAt = value); }
@@ -77,7 +81,7 @@ namespace Encrypic2017.ViewModels
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 res.data = "{'msg':'Please fill in all the details'}";
-                res.status = "Bad Request";
+                res.status = "BadRequest";
                 return res;
             }
             else
@@ -88,32 +92,11 @@ namespace Encrypic2017.ViewModels
                 newUser.password = password;
                 newUser.secretkey = firstName + "" + surname;
                 newUser.friends = "No Friends";
-                newUser.createdAt = DateTime.Now;
+                newUser.createdAt = DateTime.Now.ToString();
                 newUser.profilePicture = await uploadImage();
 
                 return await um.postUser(newUser);
             }
-        }
-        
-        public async Task<Response> authenticateUser()
-        {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                res.data = "{'msg':'Please fill in all the details'}";
-                res.status = "Bad Request";
-                return res;
-            }
-            else
-            {
-                auth.username = username;
-                auth.password = password;
-                return await um.authenticateUser(auth);
-            }
-        }
-
-        public async void searchUser()
-        {
-            await um.searchUsers(query);
         }
 
         public async Task<string> uploadImage()
@@ -133,7 +116,6 @@ namespace Encrypic2017.ViewModels
                         await stream.CopyToAsync(memory);
                         byte[] array = memory.ToArray();
                         string result = Convert.ToBase64String(array);
-                        await new MessageDialog(result).ShowAsync();
                         return result;
                     }
                 }
@@ -142,6 +124,95 @@ namespace Encrypic2017.ViewModels
             {
                 return null;
             }
+        }
+
+        public async Task<Response> authenticateUser()
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                res.data = "{'msg':'Please fill in all the details'}";
+                res.status = "BadRequest";
+                return res;
+            }
+            else
+            {
+                auth.username = username;
+                auth.password = password;
+                return await um.authenticateUser(auth);
+            }
+        }
+
+        public async Task<Response> searchUser()
+        {
+            if(string.IsNullOrEmpty(searchQuery.query))
+            {
+                res.data = "{'msg':'Please fill in all the details'}";
+                res.status = "BadRequest";
+                await new MessageDialog("Search field is empty.").ShowAsync();
+                return res;
+            }else
+            {
+                searchQuery.userResults = null;
+                res = await um.searchUsers(searchQuery);
+                try
+                {
+                    searchResults.Clear();
+                    var users = JsonArray.Parse(res.data);
+                    convertJsonToUsers(users);
+                }
+                catch (Exception exJA)
+                {
+                    MessageDialog dialog = new MessageDialog(exJA.Message);
+                    await dialog.ShowAsync();
+                }
+                return res;
+            }
+        }
+
+        public void convertJsonToUsers(JsonArray jsonData)
+        {
+            //searchResults = new ObservableCollection<User>();
+            foreach (var item in jsonData)
+            {
+                // get the object
+                var obj = item.GetObject();
+
+                User temp = new User();
+
+                // get each key value pair and sort it to the appropriate elements
+                // of the class
+                foreach (var key in obj.Keys)
+                {
+                    IJsonValue value;
+                    if (!obj.TryGetValue(key, out value))
+                        continue;
+
+                    switch (key)
+                    {
+                        case "firstName": // based on generic object key
+                            temp.firstName = value.GetString();
+                            break;
+                        case "surname":
+                            temp.surname = value.GetString();
+                            break;
+                        case "username":
+                            temp.username = value.GetString();
+                            break;
+                        case "secretkey":
+                            temp.secretkey = value.GetString();
+                            break;
+                        case "createdAt":
+                            temp.createdAt = value.GetString();
+                            break;
+                        //case "profilePicture":
+                        //    temp.profilePicture = value.GetString();
+                        //    break;
+                    }
+                } // end foreach (var key in obj.Keys)
+                Debug.Write(temp.username + "\n");
+                temp.profilePicture = "null";
+                searchResults.Add(temp);
+            } // end foreach (var item in array)
         }
     }
 }

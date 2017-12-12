@@ -102,7 +102,7 @@ namespace Encrypic2017.Data
 
         }
 
-        public virtual async Task<Response> searchUsers(string query)
+        public virtual async Task<Response> searchUsers(Search query)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
             var content = new StringContent(JsonConvert.SerializeObject(query), Encoding.UTF8, "application/json");
@@ -112,7 +112,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/searchUser", content);
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/search", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
