@@ -98,6 +98,7 @@
     <Compile Include="Data\APIService.cs" />
     <Compile Include="Data\Authentication.cs" />
     <Compile Include="Data\File.cs" />
+    <Compile Include="Data\LocalStorageService.cs" />
     <Compile Include="Data\Message.cs" />
     <Compile Include="Data\Response.cs" />
     <Compile Include="Data\Search.cs" />

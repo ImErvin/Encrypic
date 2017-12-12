@@ -28,6 +28,7 @@ namespace Encrypic2017.Views.Dashboard
     {
         UserViewModel UVM;
         Response res = new Response();
+        string fullName;
         public FriendsListView()
         {
             this.InitializeComponent();
@@ -45,11 +46,15 @@ namespace Encrypic2017.Views.Dashboard
                 {
                     noResults.Visibility = Visibility.Visible;
                     searchResults.Visibility = Visibility.Collapsed;
+                    friendsList.Visibility = Visibility.Collapsed;
+                    closeSearch_button.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     noResults.Visibility = Visibility.Collapsed;
                     searchResults.Visibility = Visibility.Visible;
+                    friendsList.Visibility = Visibility.Collapsed;
+                    closeSearch_button.Visibility = Visibility.Visible;
                 }
                 
             }
@@ -65,6 +70,16 @@ namespace Encrypic2017.Views.Dashboard
         {
             noResults.Visibility = Visibility.Visible;
             friendsList.Visibility = Visibility.Collapsed;
+            closeSearch_button.Visibility = Visibility.Visible;
+            searchResults.Visibility = Visibility.Collapsed;
+        }
+
+        private void closeSearch_button_Click(object sender, RoutedEventArgs e)
+        {
+            noResults.Visibility = Visibility.Collapsed;
+            friendsList.Visibility = Visibility.Visible;
+            searchResults.Visibility = Visibility.Collapsed;
+            closeSearch_button.Visibility = Visibility.Collapsed;
         }
     }
 }

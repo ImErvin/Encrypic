@@ -15,6 +15,18 @@
                        KeyDown="searchUsers_KeyDown"
                        QueryText="{x:Bind UVM.searchQuery.query, Mode=TwoWay}" 
                        QuerySubmitted="searchUsers_QuerySubmitted"></SearchBox>
+            <Button x:Name="closeSearch_button"
+                    Click="closeSearch_button_Click"
+                    Margin="0 0 0 0"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    VerticalAlignment="Top"
+                    Background="#1f1f1f"
+                    Foreground="White"
+                    HorizontalAlignment="Right"
+                    Visibility="Collapsed">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE89F;"/>
+            </Button>
             <ListView x:Name="friendsList"
                       HorizontalAlignment="Stretch"
                       Visibility="Visible"
@@ -29,6 +41,11 @@
                                     Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
+                <ListView.Transitions>
+                    <TransitionCollection>
+                        <EdgeUIThemeTransition x:Name="MyEdge" Edge="Left" />
+                    </TransitionCollection>
+                </ListView.Transitions>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
@@ -43,9 +60,14 @@
                                        Grid.Column="1"
                                        FontSize="40"
                                        Margin="0 10 0 0"/>
-                            <TextBlock Text="December 2017" 
-                                       Grid.Column="1" 
+                            <TextBlock Text="firstname" 
+                                       Grid.Column="1"
+                                       FontSize="14"
                                        Grid.Row="0"/>
+                            <TextBlock Text="surname" 
+                                           Grid.Column="1" 
+                                           FontSize="13"
+                                           Grid.Row="0"/>
                             <RelativePanel>
                                 <Button Margin="0 10 0 0"
                                     Grid.Column="2"
@@ -96,8 +118,7 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                       ScrollViewer.HorizontalScrollMode="Enabled"
                       ScrollViewer.VerticalScrollMode="Disabled"
-                      Margin="20"
-                      Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+                      Margin="20">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Background="Transparent" 
@@ -121,9 +142,14 @@
                                        Grid.Column="1"
                                        FontSize="40"
                                        Margin="0 10 0 0"/>
-                                <TextBlock Text="{x:Bind createdAt, Mode=OneWay}" 
-                                       Grid.Column="1" 
+                                <TextBlock Text="{x:Bind firstName, Mode=OneWay}" 
+                                       Grid.Column="1"
+                                       FontSize="14"
                                        Grid.Row="0"/>
+                                <TextBlock Text="{x:Bind surname, Mode=OneWay}" 
+                                           Grid.Column="1" 
+                                           FontSize="13"
+                                           Grid.Row="0"/>
                             </StackPanel>
 
                             <Button Margin="0 0 0 0"
@@ -139,6 +165,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
         </StackPanel>
         <!--<Grid x:Name="changedetails_grid" Grid.Row="1">
             <Grid.ColumnDefinitions>

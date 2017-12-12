@@ -24,6 +24,8 @@ namespace Encrypic2017.Data
 
         public Response res = new Response();
 
+        LocalStorageService lss = new LocalStorageService();
+
         public void ClientHeaderInfo(HttpClient client)
         {
             client.BaseAddress = new Uri(ServerUrl);
@@ -84,6 +86,8 @@ namespace Encrypic2017.Data
 
                     if (result.IsSuccessStatusCode)
                     {
+                        lss.saveUser(res.data);
+                        await new MessageDialog(await lss.getUser()).ShowAsync();
                         return res;
                     }
                     else
