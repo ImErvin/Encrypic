@@ -78,11 +78,34 @@ router.put('/putUser', (req, res, next) => {
         User.updateUser(user, (err, user) => {
             if (err) {
                 res.status(500);
-                res.json({ success: false, msg: 'Update Error' });
+                res.json({
+                    msg: "Update Failed",
+                    user: {
+                        id: user._id,
+                        firstName: user.firstName,
+                        surname: user.surname,
+                        username: user.username,
+                        secretkey: user.secretkey,
+                        friends: user.friends,
+                        createdAt: user.createdAt,
+                        profilePicture: user.profilePicture
+                    }
+                });
             } else {
                 res.status(200);
-                console.log(user);
-                res.json({ success: true, msg: 'Update Success' });
+                res.json({
+                    msg: "Update Success",
+                    user: {
+                        id: user._id,
+                        firstName: user.firstName,
+                        surname: user.surname,
+                        username: user.username,
+                        secretkey: user.secretkey,
+                        friends: user.friends,
+                        createdAt: user.createdAt,
+                        profilePicture: user.profilePicture
+                    }
+                });
             }
         });
     });
