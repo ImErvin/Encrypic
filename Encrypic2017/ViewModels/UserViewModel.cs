@@ -1,5 +1,6 @@
 ﻿using Encrypic2017.Data;
 using Encrypic2017.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace Encrypic2017.ViewModels
         public UserModel um = new UserModel();
 
         public User newUser = new User();
+
+        public User currentUser = new User();
 
         public Authentication auth = new Authentication();
 
@@ -169,6 +172,56 @@ namespace Encrypic2017.ViewModels
             }
         }
 
+
+        public async Task<Response> updateUser()
+        {
+            if (string.IsNullOrEmpty(firstName) && string.IsNullOrEmpty(surname) && string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
+            {
+                res.data = "{'msg':'Please fill in all the details'}";
+                res.status = "BadRequest";
+                return res;
+            }
+            else
+            {
+                newUser.firstName = firstName;
+                newUser.surname = surname;
+                newUser.username = username;
+                newUser.password = password;
+                newUser.secretkey = secretkey;
+                newUser.friends = friends;
+                newUser.createdAt = createdAt;
+                newUser.profilePicture = profilePicture;
+
+                return await um.putUser(newUser);
+            }
+        }
+
+        public async void getUserDetails()
+        {
+            try
+            {
+                string jsonString = await um.getFromLocalStorage();
+                convertToJsonUser(jsonString);
+            }
+            catch
+            {
+                MessageDialog dialog = new MessageDialog("Error loading local storage");
+                await dialog.ShowAsync();
+            }
+        }
+
+        public void convertToJsonUser(string jsonData)
+        {
+            var data = JsonConvert.DeserializeObject<RootObject>(jsonData);
+            this.firstName = data.user.firstName;
+            this.surname = data.user.surname;
+            this.username = data.user.username;
+            this.secretkey = data.user.secretkey;
+            this.friends = data.user.friends;
+            this.createdAt = data.user.createdAt;
+            this.profilePicture = "null";
+        }
+
         public void convertJsonToUsers(JsonArray jsonData)
         {
             //searchResults = new ObservableCollection<User>();
@@ -214,5 +267,10 @@ namespace Encrypic2017.ViewModels
                 searchResults.Add(temp);
             } // end foreach (var item in array)
         }
+    }
+
+    class RootObject
+    {
+        public User user { get; set; }
     }
 }

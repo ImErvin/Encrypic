@@ -34,6 +34,8 @@ namespace Encrypic2017.Data
             client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
         }
 
+        // POST USER -------------------------------------------------------------------------------------- 
+
         public virtual async Task<Response> postUser(User user)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -69,25 +71,25 @@ namespace Encrypic2017.Data
 
         }
 
-        public virtual async Task<Response> authenticateUser(Authentication auth)
+        // Put User --------------------------------------------------------------------------------------
+
+        public virtual async Task<Response> putUser(User user)
         {
             HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
-            var content = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
             using (var client = new HttpClient(handler))
             {
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/authenticate", content);
+                    var result = await client.PostAsync(ServerUrl + "/putUser", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
 
                     if (result.IsSuccessStatusCode)
                     {
-                        lss.saveUser(res.data);
-                        await new MessageDialog(await lss.getUser()).ShowAsync();
                         return res;
                     }
                     else
@@ -105,6 +107,46 @@ namespace Encrypic2017.Data
             }
 
         }
+
+        // Authenticate User --------------------------------------------------------------------------------
+
+        public virtual async Task<Response> authenticateUser(Authentication auth)
+        {
+            HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
+            var content = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient(handler))
+            {
+                ClientHeaderInfo(client);
+                try
+                {
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/authenticate", content);
+
+                    res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
+                    res.status = Convert.ToString(result.StatusCode);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        saveToLocalStorage(res.data);
+                        return res;
+                    }
+                    else
+                    {
+                        return res;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await new MessageDialog(ex.Message).ShowAsync();
+                    res.data = "{'msg':'There was an error connecting to backend - Try again later'}";
+                    res.status = "Internal Server Error";
+                    return res;
+                }
+            }
+
+        }
+
+        // Search users ------------------------------------------------------------------------------------
 
         public virtual async Task<Response> searchUsers(Search query)
         {
@@ -138,6 +180,17 @@ namespace Encrypic2017.Data
                     return res;
                 }
             }
+        }
+
+
+        public void saveToLocalStorage(string data)
+        {
+            lss.saveUser(data);
+        }
+
+        public async Task<string> getFromLocalStorage()
+        {
+            return await lss.getUser();
         }
 
         public virtual async Task getUser(string username)

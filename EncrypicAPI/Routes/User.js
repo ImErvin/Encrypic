@@ -31,6 +31,7 @@ router.post('/postUser', (req, res, next) => {
             username: req.body.username,
             password: req.body.password,
             friends: req.body.friends,
+            secretkey: req.body.secretkey,
             createdAt: req.body.createdAt,
             profilePicture: req.body.profilePicture
         });
@@ -38,6 +39,7 @@ router.post('/postUser', (req, res, next) => {
         console.log(req.body.profilePicture);
         User.addUser(newUser, (err, user) => {
             if (err) {
+                console.log(err);
                 res.status(500);
                 res.json({ success: false, msg: 'Registration Error' });
             } else {
@@ -49,6 +51,41 @@ router.post('/postUser', (req, res, next) => {
 
 
 })
+
+router.post('/putUser', (req, res, next) => {
+    
+        User.getUserByUsername(req.body.username, (err, user) => {
+            if (err) throw err;
+    
+            if (!user) {
+                res.status(409);
+                return res.json({ success: false, msg: 'Username does not exists' });
+            }
+    
+            let newUser = new User({
+                firstName: req.body.firstName || user.firstname,
+                surname: req.body.surname || user.surname,
+                username: req.body.username,
+                password: req.body.password || user.password,
+                secretkey: req.body.secretkey || user.secretkey,
+                friends: req.body.friends || user.friends,
+                createdAt: req.body.createdAt,
+                profilePicture: req.body.profilePicture || user.profilePicture
+            });
+
+            User.addUser(newUser, (err, user) => {
+                if (err) {
+                    res.status(500);
+                    res.json({ success: false, msg: 'Update Error' });
+                } else {
+                    res.status(200);
+                    res.json({ success: true, msg: 'Update Success' });
+                }
+            });
+        });
+    
+    
+    })
 
 //authenticate route
 router.post('/authenticate', (req, res, next) => {

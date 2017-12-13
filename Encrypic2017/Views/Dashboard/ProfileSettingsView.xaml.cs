@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Encrypic2017.Data;
+using Encrypic2017.ViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,19 +21,37 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Encrypic2017.Views.Dashboard
 {
+    
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class ProfileSettingsView : Page
     {
+        UserViewModel UVM;
+
+        Response res = new Response();
         public ProfileSettingsView()
         {
             this.InitializeComponent();
+            UVM = new UserViewModel();
+            UVM.getUserDetails();
         }
 
-        private void changepassword_hl_Click(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        private async void updateProfile_Button_Click(object sender, RoutedEventArgs e)
         {
+            res = await UVM.updateUser();
 
+            if (res.status == "OK")
+            {
+                Frame.Navigate(typeof(MasterView));
+            }
+            else
+            {
+                var data = (JObject)JsonConvert.DeserializeObject(res.data);
+                string msg = data["msg"].Value<string>();
+                errormessage.Text = msg;
+                errormessage.Visibility = Visibility.Visible;
+            }
         }
     }
 }

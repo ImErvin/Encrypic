@@ -13,89 +13,35 @@
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
                     Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
-                    Width="280"
+                    Width="320"
                     Margin="0 20 0 0"
                     >
             <Border BorderBrush="#522B47" 
                 BorderThickness="2"></Border>
-            <Ellipse Margin="10,10,10,10"
-                     Width="200"
-                     Height="200">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Assets/profilepic.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <TextBlock Foreground="White" 
-                       FontFamily="Segoe UI Light" 
+            <Button VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="10,10,10,10"
+                    Style="{StaticResource ButtonRevealStyle}">
+                <Ellipse Width="200"
+                         Height="200">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="../../Assets/profilepic.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Button>
+           
+            <TextBlock FontFamily="Segoe UI Light" 
                        FontSize="30"
                        Margin="10"
-                       Text="Username"
+                       Text="{x:Bind UVM.username, Mode=TwoWay}"
                        HorizontalAlignment="Center"/>
-            <Grid x:Name="changepassword_grid" Visibility="Collapsed">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="135"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-                               Grid.Column="0"
-                               Margin="10 15 10 10"
-                               Text="Old Password:"
-                           Foreground="White"/>
-                <TextBox Grid.Column="1"
-                             Grid.Row="0"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="*******"/>
-                <TextBlock Grid.Row="1"
-                               Grid.Column="0"
-                               Margin="10 15 10 10"
-                               Text="New Password:"
-                           Foreground="White"/>
-                <TextBox Grid.Column="1"
-                             Grid.Row="1"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="Surname"/>
-                <TextBlock Grid.Row="2"
-                               Grid.Column="0"
-                               Margin="10 15 10 10"
-                               Text="Repeat Password:"
-                           Foreground="White"/>
-                <TextBox Grid.Column="1"
-                             Grid.Row="2"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="abcdefg"/>
-                <TextBlock Grid.Column="1"
-                               Grid.Row="3"
-                               Margin="10 10 10 10"
-                               Foreground="#522B47" 
-                               FontFamily="Segoe UI Light" 
-                               FontSize="12"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Right">
-                </TextBlock>
-                <RelativePanel Grid.Row="3"
-                               Grid.ColumnSpan="2">
-                    <Button Margin="10 0 10 10"
-                            HorizontalAlignment="Right"
-                            Background="#522B47"
-                            Foreground="White"
-                            Content="Change Password">
-                    </Button>
-                    <Button Margin="10 0 10 10"
-                            HorizontalAlignment="Right"
-                            Background="#522B47"
-                            Foreground="White"
-                            Content="Cancel"
-                            RelativePanel.AlignRightWithPanel="True">
-                    </Button>
-                </RelativePanel>
-            </Grid>
-
+            <TextBlock x:Name="errormessage"
+                       Foreground="Crimson" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10 0 0 0"
+                       Text="Error Message"
+                       Visibility="Collapsed"/>
             <Grid x:Name="changedetails_grid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -109,47 +55,44 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0"
-                               Grid.Column="0"
-                               Margin="10 15 10 10"
-                               Text="First Name:"
-                           Foreground="White"/>
+                           Grid.Column="0"
+                           Margin="10 15 10 10"
+                           Text="First Name:"/>
                 <TextBox Grid.Column="1"
-                             Grid.Row="0"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="First Name"/>
+                         Grid.Row="0"
+                         Margin="10 10 10 10" 
+                         PlaceholderText="First Name"
+                         Text="{x:Bind UVM.firstName, Mode=TwoWay}"/>
                 <TextBlock Grid.Row="1"
-                               Grid.Column="0"
-                               Margin="10 15 10 10"
-                               Text="Surname:"
-                           Foreground="White"/>
+                           Grid.Column="0"
+                           Margin="10 15 10 10"
+                           Text="Surname:"/>
                 <TextBox Grid.Column="1"
-                             Grid.Row="1"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="Surname"/>
+                         Grid.Row="1"
+                         Margin="10 10 10 10" 
+                         PlaceholderText="Surname"
+                         Text="{x:Bind UVM.surname, Mode=TwoWay}"/>
                 <TextBlock Grid.Row="2"
                                Grid.Column="0"
                                Margin="10 15 10 10"
-                               Text="Secret Key:"
-                           Foreground="White"/>
+                               Text="Secret Key:"/>
                 <TextBox Grid.Column="1"
-                             Grid.Row="2"
+                         Grid.Row="2"
+                         Margin="10 10 10 10" 
+                         PlaceholderText="abcdefg"
+                         Text="{x:Bind UVM.secretkey, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="10 15 10 10"
+                           Text="Password:"/>
+                <PasswordBox Grid.Column="1"
+                             Grid.Row="3"
                              Margin="10 10 10 10" 
-                             PlaceholderText="abcdefg"/>
-                <TextBlock Grid.Column="1"
-                               Grid.Row="3"
-                               Margin="10 10 10 10"
-                               FontFamily="Segoe UI Light" 
-                           Foreground="WhiteSmoke"
-                               FontSize="12"
-                               FontWeight="Bold"
-                               HorizontalAlignment="Right">
-                        <Hyperlink x:Name="changepassword_hl"
-                                   Click="changepassword_hl_Click"
-                                   Foreground="WhiteSmoke">
-                            Change password
-                        </Hyperlink>
-                </TextBlock>
-                <Button Grid.Row="4"
+                             PlaceholderText="*******"
+                             Password="{x:Bind UVM.password, Mode=TwoWay}"/>
+                <Button x:Name="updateProfile_Button"
+                        Click="updateProfile_Button_Click"
+                        Grid.Row="4"
                         Grid.Column="1"
                         Margin="10 0 10 10"
                         HorizontalAlignment="Right"

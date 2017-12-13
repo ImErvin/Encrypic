@@ -20,14 +20,14 @@ const UserSchema = mongoose.Schema({
         required: true,
         select: false
     },
-    secretket: {
+    secretkey: {
         type: String,
     },
     friends: {
         type: String,
     },
     createdAt: {
-        type: Date
+        type: String,
     },
     profilePicture:{
         type: String
@@ -78,10 +78,5 @@ module.exports.searchUsers = function(query, callback){
 
         callback(result);
     });
-     
-    // User.find(query, function(err, result) {
-    //     if (err) throw err;
-
-    //     callback(result);
 }
 ;

@@ -28,7 +28,6 @@ namespace Encrypic2017.Views.Dashboard
     {
         UserViewModel UVM;
         Response res = new Response();
-        string fullName;
         public FriendsListView()
         {
             this.InitializeComponent();

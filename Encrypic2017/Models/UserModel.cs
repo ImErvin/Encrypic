@@ -26,6 +26,11 @@ namespace Encrypic2017.Models
             return await apiService.postUser(user);
         }
 
+        public async Task<Response> putUser(User user)
+        {
+            return await apiService.putUser(user);
+        }
+
         public async Task<Response> authenticateUser(Authentication auth)
         {
             return await apiService.authenticateUser(auth);
@@ -34,6 +39,11 @@ namespace Encrypic2017.Models
         public async Task<Response> searchUsers(Search query)
         {
             return await apiService.searchUsers(query);
+        }
+
+        public async Task<string> getFromLocalStorage()
+        {
+            return await apiService.getFromLocalStorage();
         }
     }
 }
