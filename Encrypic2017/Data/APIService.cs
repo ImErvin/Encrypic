@@ -83,13 +83,14 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    var result = await client.PostAsync(ServerUrl + "/putUser", content);
+                    var result = await client.PutAsync(ServerUrl + "/putUser", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
 
                     if (result.IsSuccessStatusCode)
                     {
+                        saveToLocalStorage(res.data);
                         return res;
                     }
                     else

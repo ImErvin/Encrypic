@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -32,6 +33,7 @@ namespace Encrypic2017.Views.Dashboard
         Response res = new Response();
         public ProfileSettingsView()
         {
+            Debug.WriteLine("hey");
             this.InitializeComponent();
             UVM = new UserViewModel();
             UVM.getUserDetails();
@@ -43,7 +45,10 @@ namespace Encrypic2017.Views.Dashboard
 
             if (res.status == "OK")
             {
-                Frame.Navigate(typeof(MasterView));
+                var data = (JObject)JsonConvert.DeserializeObject(res.data);
+                string msg = data["msg"].Value<string>();
+                errormessage.Text = msg;
+                errormessage.Visibility = Visibility.Visible;
             }
             else
             {

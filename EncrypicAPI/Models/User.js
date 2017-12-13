@@ -53,6 +53,10 @@ module.exports.addUser = function(newUser, callback){
     });
 }
 
+module.exports.updateUser = function(user, callback){
+    user.save(callback);
+}
+
 // Password compare for the user
 module.exports.comparePassword = function(candidatePassword, hash, callback){
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
@@ -75,7 +79,6 @@ module.exports.searchUsers = function(query, callback){
     User.find(query)
     .exec(function(err, result) {
         if (err) throw err;
-
         callback(result);
     });
 }

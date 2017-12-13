@@ -203,9 +203,9 @@ namespace Encrypic2017.ViewModels
                 string jsonString = await um.getFromLocalStorage();
                 convertToJsonUser(jsonString);
             }
-            catch
+            catch (Exception err)
             {
-                MessageDialog dialog = new MessageDialog("Error loading local storage");
+                MessageDialog dialog = new MessageDialog(err.Message);
                 await dialog.ShowAsync();
             }
         }
