@@ -32,6 +32,12 @@ namespace Encrypic2017.Views.Dashboard
         {
             this.InitializeComponent();
             UVM = new UserViewModel();
+            loadFriends();
+        }
+
+        private async void loadFriends()
+        {
+            await UVM.getUserFriends();
         }
 
         private async void searchUsers_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
@@ -79,6 +85,13 @@ namespace Encrypic2017.Views.Dashboard
             friendsList.Visibility = Visibility.Visible;
             searchResults.Visibility = Visibility.Collapsed;
             closeSearch_button.Visibility = Visibility.Collapsed;
+            loadFriends();
+        }
+
+        private void addFriend_button_Click(object sender, RoutedEventArgs e)
+        {
+            var value = ((Button)sender).Tag;
+            UVM.addFriend(value.ToString());
         }
     }
 }

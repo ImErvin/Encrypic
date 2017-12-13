@@ -25,7 +25,7 @@
                 <Ellipse Width="200"
                          Height="200">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="../../Assets/profilepic.png" />
+                        <ImageBrush ImageSource="../../Assets/samplepp.png" />
                     </Ellipse.Fill>
                 </Ellipse>
             </Button>

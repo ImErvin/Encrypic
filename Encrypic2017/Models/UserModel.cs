@@ -41,6 +41,11 @@ namespace Encrypic2017.Models
             return await apiService.searchUsers(query);
         }
 
+        public async Task<Response> getUserFriends(Search query)
+        {
+            return await apiService.getUserFriends(query);
+        }
+
         public async Task<string> getFromLocalStorage()
         {
             return await apiService.getFromLocalStorage();

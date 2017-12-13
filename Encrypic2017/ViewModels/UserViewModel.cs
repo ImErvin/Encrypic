@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.Data.Json;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -32,10 +33,12 @@ namespace Encrypic2017.ViewModels
 
         public ObservableCollection<User> searchResults = new ObservableCollection<User>();
 
+        public ObservableCollection<User> friendsList = new ObservableCollection<User>();
+
         public Search searchQuery = new Search();
 
         public UserViewModel(User user = null) : base(user) {
-            
+
         }
 
         public string firstName
@@ -94,12 +97,31 @@ namespace Encrypic2017.ViewModels
                 newUser.username = username;
                 newUser.password = password;
                 newUser.secretkey = firstName + "" + surname;
-                newUser.friends = "No Friends";
+                newUser.friends = "(owner";
                 newUser.createdAt = DateTime.Now.ToString();
-                newUser.profilePicture = await uploadImage();
+                newUser.profilePicture = "";
 
                 return await um.postUser(newUser);
             }
+        }
+
+        public async void addFriend(string userFromView)
+        {
+            Debug.WriteLine(userFromView);
+            newUser = new User();
+            string jsonString = await um.getFromLocalStorage();
+            var data = JsonConvert.DeserializeObject<RootObject>(jsonString);
+            newUser.friends = data.user.friends + "|" + userFromView;
+            newUser.firstName = data.user.firstName;
+            newUser.surname = data.user.surname;
+            newUser.username = data.user.username;
+            newUser.secretkey = data.user.secretkey;
+            newUser.createdAt = data.user.createdAt;
+            newUser.profilePicture = data.user.profilePicture;
+
+            Debug.WriteLine(newUser.friends);
+
+            await um.putUser(newUser);
         }
 
         public async Task<string> uploadImage()
@@ -172,6 +194,31 @@ namespace Encrypic2017.ViewModels
             }
         }
 
+        public async Task<Response> getUserFriends()
+        {
+            
+            string jsonString = await um.getFromLocalStorage();
+
+            var data = JsonConvert.DeserializeObject<RootObject>(jsonString);
+
+            searchQuery.query = data.user.friends;
+
+            searchQuery.userResults = null;
+            res = await um.getUserFriends(searchQuery);
+            try
+            {
+                searchResults.Clear();
+                var users = JsonArray.Parse(res.data);
+                convertJsonToUsers(users);
+            }
+            catch (Exception exJA)
+            {
+                MessageDialog dialog = new MessageDialog(exJA.Message);
+                await dialog.ShowAsync();
+            }
+            return res;
+        }
+
 
         public async Task<Response> updateUser()
         {
@@ -219,7 +266,7 @@ namespace Encrypic2017.ViewModels
             this.secretkey = data.user.secretkey;
             this.friends = data.user.friends;
             this.createdAt = data.user.createdAt;
-            this.profilePicture = "null";
+            this.profilePicture = data.user.profilePicture;
         }
 
         public void convertJsonToUsers(JsonArray jsonData)

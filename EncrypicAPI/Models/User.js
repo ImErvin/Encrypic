@@ -57,6 +57,10 @@ module.exports.updateUser = function(user, callback){
     user.save(callback);
 }
 
+// module.exports.userFriends = function(username, callback){
+
+// }
+
 // Password compare for the user
 module.exports.comparePassword = function(candidatePassword, hash, callback){
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {

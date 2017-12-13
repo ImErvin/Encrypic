@@ -5,15 +5,15 @@ const Attachment = require('./File');
 
 const MessageSchema = mongoose.Schema({
     messageFrom: {
-        type: User,
+        type: String,
         required: true
     },
     messageTo: {
-        type: User,
+        type: String,
         required: true
     },
     sentAt: {
-        type: Date,
+        type: String,
         required: true
     },
     secretkey: {
@@ -25,14 +25,14 @@ const MessageSchema = mongoose.Schema({
         required: true
     },
     fileAttachment: {
-        type: Attachment
+        type: String
     },
     encryptedMessage: {
         type: String,
         required: true
     },
     expireAt: {
-        type: Date,
+        type: String,
     }
 });
 

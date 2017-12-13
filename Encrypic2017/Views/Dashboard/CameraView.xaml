@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock HorizontalAlignment="Center"
                    VerticalAlignment="Center">
-            Camera View
+            Coming Soon!
         </TextBlock>
     </Grid>
 </Page>
