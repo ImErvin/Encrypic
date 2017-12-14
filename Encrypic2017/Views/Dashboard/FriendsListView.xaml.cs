@@ -93,5 +93,11 @@ namespace Encrypic2017.Views.Dashboard
             var value = ((Button)sender).Tag;
             UVM.addFriend(value.ToString());
         }
+
+        private void messageFriend_button_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine(((Button)sender).Tag);
+            this.Frame.Navigate(typeof(SendMessageView), ((Button)sender).Tag);
+        }
     }
 }

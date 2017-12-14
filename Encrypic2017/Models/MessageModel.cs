@@ -15,5 +15,10 @@ namespace Encrypic2017.Models
         {
             return await apiService.postMessage(message);
         }
+
+        public async Task<Response> searchMessage(Search query)
+        {
+            return await apiService.searchMessage(query);
+        }
     }
 }

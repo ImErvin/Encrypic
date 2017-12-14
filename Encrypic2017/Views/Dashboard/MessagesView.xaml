@@ -29,7 +29,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Visibility="Collapsed">
-                <Image Width="450" Height="400" Stretch="Fill" Source="../../Assets/background_images/bg4.jpg"/>
+                <Image x:Name="sentImage" Width="450" Height="400" Stretch="Fill"/>
                 <CommandBar>
                     <CommandBar.SecondaryCommands>
                         <AppBarButton Icon="Send" Label="Reply"/>

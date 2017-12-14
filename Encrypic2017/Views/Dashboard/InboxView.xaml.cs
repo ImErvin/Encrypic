@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Encrypic2017.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,19 +23,27 @@ namespace Encrypic2017.Views.Dashboard
     /// </summary>
     public sealed partial class InboxView : Page
     {
+        MessageViewModel MVM;
         public InboxView()
         {
             this.InitializeComponent();
+            MVM = new MessageViewModel();
+            loadMessages();
+        }
+
+        private async void loadMessages()
+        {
+            await MVM.searchMessages();
         }
 
         private void MessagesList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(MessagesView));
+            this.Frame.Navigate(typeof(MessagesView), ((StackPanel)sender).Tag);
         }
 
-        private void MessagesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void openMessage_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(MessagesView), ((Button)sender).Tag);
         }
     }
 }

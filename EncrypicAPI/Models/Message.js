@@ -37,11 +37,19 @@ module.exports.searchMessages = function(query, callback){
     });
 }
 
-module.exports.removeMessage = function(newMessage, callback){
-    Message.findOneAndRemove(newMessage.id)
+module.exports.removeMessage = function(id, callback){
+    Message.findOneAndRemove(id)
     .exec(function(err, result) {
         if (err) throw err;
         callback(result);
     });
+}
+
+module.exports.getMessages = function(callback){
+    Message.find(function(err, messages) {
+        if (err) throw err;
+
+        callback(messages);
+});
 }
 ;

@@ -20,7 +20,7 @@ namespace Encrypic2017.Data
 
         private static readonly HttpClient client = new HttpClient();
 
-        const string ServerUrl = "http://127.0.0.1:3000/users"; //specify your server url
+        const string ServerUrl = "http://127.0.0.1:3000/"; //specify your server url
 
         public Response res = new Response();
 
@@ -46,7 +46,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    var result = await client.PostAsync(ServerUrl + "/postUser", content);
+                    var result = await client.PostAsync(ServerUrl + "users/postUser", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -83,7 +83,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    var result = await client.PutAsync(ServerUrl + "/putUser", content);
+                    var result = await client.PutAsync(ServerUrl + "users/putUser", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -121,7 +121,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/authenticate", content);
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "users/authenticate", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -159,7 +159,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/search", content);
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "users/search", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -193,7 +193,7 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/userFriends", content);
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "users/userFriends", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -227,7 +227,41 @@ namespace Encrypic2017.Data
                 ClientHeaderInfo(client);
                 try
                 {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/userFriends", content);
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "messages/postMessage", content);
+
+                    res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
+                    res.status = Convert.ToString(result.StatusCode);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return res;
+                    }
+                    else
+                    {
+                        return res;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await new MessageDialog(ex.Message).ShowAsync();
+                    res.data = "{'msg':'There was an error connecting to backend - Try again later'}";
+                    res.status = "Internal Server Error";
+                    return res;
+                }
+            }
+        }
+
+        public virtual async Task<Response> searchMessage(Search query)
+        {
+            HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
+            var content = new StringContent(JsonConvert.SerializeObject(query), Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient(handler))
+            {
+                ClientHeaderInfo(client);
+                try
+                {
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "messages/search", content);
 
                     res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
                     res.status = Convert.ToString(result.StatusCode);
@@ -261,27 +295,5 @@ namespace Encrypic2017.Data
         {
             return await lss.getUser();
         }
-
-        public virtual async Task getUser(string username)
-        {
-            HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
-            var content = new StringContent(JsonConvert.SerializeObject(username), Encoding.UTF8, "application/json");
-
-            using (var client = new HttpClient(handler))
-            {
-                ClientHeaderInfo(client);
-                try
-                {
-                    HttpResponseMessage result = await client.PostAsync(ServerUrl, content);
-                    await new MessageDialog(await result.Content.ReadAsStringAsync()).ShowAsync();
-                }
-                catch (Exception ex)
-                {
-                    await new MessageDialog(ex.Message).ShowAsync();
-                }
-            }
-
-        }
-
     }
 }

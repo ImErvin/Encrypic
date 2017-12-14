@@ -32,9 +32,8 @@ app.get('/', (req, res) => {
     res.send("Welcome to Encrypic");
 });
 
-app.use(users);
-app.use(messages);
-app.use
+app.use('/users', users);
+app.use('/messages', messages);
 
 app.listen(port, () => {
     console.log('Server started on port ' + port);

@@ -3,9 +3,13 @@ using Encrypic2017.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Data.Json;
+using Windows.UI.Popups;
 
 namespace Encrypic2017.ViewModels
 {
@@ -15,7 +19,8 @@ namespace Encrypic2017.ViewModels
         UserModel um = new UserModel();
         Message newMessage = new Message();
         Response res = new Response();
-        User messageToUser = new User();
+        public ObservableCollection<Message> searchResults = new ObservableCollection<Message>();
+        public Search searchQuery = new Search();
 
         public MessageViewModel(Message message = null) : base(message)
         {
@@ -69,13 +74,81 @@ namespace Encrypic2017.ViewModels
                 var username = data.user.username;
 
                 newMessage.messageFrom = username;
-                newMessage.messageTo = messageToUser.username;
+                newMessage.messageTo = messageTo;
                 newMessage.sentAt = DateTime.Now.ToString();
-                newMessage.secretkey = data.user.secretkey + "" + messageToUser.secretkey;
+                newMessage.secretkey = data.user.secretkey;
                 newMessage.fileAttachment = fileAttachment;
 
                 return await mm.postMessage(newMessage);
             }
+        }
+
+        public async Task<Response> searchMessages()
+        {
+
+            searchQuery.messageResults = null;
+
+            string jsonString = await um.getFromLocalStorage();
+
+            var data = JsonConvert.DeserializeObject<RootObject>(jsonString);
+
+            var username = data.user.username;
+
+            searchQuery.query = username;
+            res = await mm.searchMessage(searchQuery);
+            try
+            {
+                searchResults.Clear();
+                var messages = JsonArray.Parse(res.data);
+                convertJsonToMessages(messages);
+            }
+            catch (Exception exJA)
+            {
+                MessageDialog dialog = new MessageDialog(exJA.Message);
+                await dialog.ShowAsync();
+            }
+            return res;
+        }
+
+        public void convertJsonToMessages(JsonArray jsonData)
+        {
+            //searchResults = new ObservableCollection<User>();
+            foreach (var item in jsonData)
+            {
+                // get the object
+                var obj = item.GetObject();
+
+                Message temp = new Message();
+
+                // get each key value pair and sort it to the appropriate elements
+                // of the class
+                foreach (var key in obj.Keys)
+                {
+                    IJsonValue value;
+                    if (!obj.TryGetValue(key, out value))
+                        continue;
+
+                    switch (key)
+                    {
+                        case "messageFrom": // based on generic object key
+                            temp.messageFrom = value.GetString();
+                            break;
+                        case "messageTo":
+                            temp.messageTo = value.GetString();
+                            break;
+                        case "sentAt":
+                            temp.sentAt = value.GetString();
+                            break;
+                        case "secretkey":
+                            temp.secretkey = value.GetString();
+                            break;
+                        case "fileAttachment":
+                            temp.fileAttachment = value.GetString();
+                            break;
+                    }
+                } // end foreach (var key in obj.Keys)
+                searchResults.Add(temp);
+            } // end foreach (var item in array)
         }
     }
 }

@@ -12,17 +12,16 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Visibility="Visible">
-            <Image Width="450" Height="400" Stretch="Fill" Source="../../Assets/background_images/bg4.jpg"/>
-
+            <Image Visibility="Collapsed" x:Name="previewImage" Width="450" Height="400" Stretch="Fill" />
             <CommandBar>
-                <AppBarButton Icon="Upload" Label="Upload"></AppBarButton>
+                <AppBarButton Icon="Upload" Label="Upload" x:Name="upload_button" Click="upload_button_Click"></AppBarButton>
                 <CommandBar.SecondaryCommands>
-                    <AppBarButton Icon="Send" Label="Send"/>
+                    <AppBarButton Icon="Send" Label="Send" x:Name="sendMessage_button" Click="sendMessage_button_Click"/>
                     <AppBarButton Icon="Back" Label="Close" x:Name="closePicture_button" Click="closePicture_button_Click"/>
                 </CommandBar.SecondaryCommands>
 
                 <CommandBar.Content>
-                    <TextBlock Text="To Username" Margin="12,14"/>
+                    <TextBlock Text="{x:Bind toUsername}" Margin="12,14"/>
                 </CommandBar.Content>
             </CommandBar>
         </StackPanel>

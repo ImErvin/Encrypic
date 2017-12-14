@@ -11,5 +11,6 @@ namespace Encrypic2017.Data
     {
         public string query { get; set; }
         public ObservableCollection<User> userResults { get; set; }
+        public ObservableCollection<User> messageResults { get; set; }
     }
 }
