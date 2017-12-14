@@ -49,49 +49,44 @@
                 </ListView.Transitions>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="vm:User">
-                        <StackPanel Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
+                        <Grid>
+                            <StackPanel Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}"
                                     Padding="35">
-                            <Ellipse Height="100" Width="100" Margin="0 -5 0 0" 
+                                <Ellipse Height="100" Width="100" Margin="0 -5 0 0" 
                                      Grid.RowSpan="2">
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
-                                </Ellipse.Fill>
-                            </Ellipse>
-                            <TextBlock Text="{x:Bind username, Mode=OneWay}" 
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="../../Assets/comingsoon.png" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="{x:Bind username, Mode=OneWay}" 
                                        Grid.Column="1"
                                        FontSize="40"
                                        Margin="0 10 0 0"/>
-                            <TextBlock Text="{x:Bind firstName, Mode=OneWay}" 
+                                <TextBlock Text="{x:Bind firstName, Mode=OneWay}" 
                                        Grid.Column="1"
                                        FontSize="14"
                                        Grid.Row="0"/>
-                            <TextBlock Text="{x:Bind surname, Mode=OneWay}" 
+                                <TextBlock Text="{x:Bind surname, Mode=OneWay}" 
                                            Grid.Column="1" 
                                            FontSize="13"
                                            Grid.Row="0"/>
-                            <RelativePanel>
-                                <Button Margin="0 10 0 0"
-                                    Grid.Column="2"
-                                    Grid.Row="0"
-                                    RelativePanel.AlignRightWithPanel="True"
-                                    Background="#522B47"
-                                    Foreground="White"
-                                    HorizontalAlignment="Right">
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;"/>
-                                </Button>
-                                <Button Margin="0 10 0 0"
-                                    Grid.Column="2"
-                                    Grid.Row="1"
-                                    VerticalAlignment="Top"
-                                    Background="#522B47"
-                                    Foreground="White"
-                                    HorizontalAlignment="Right">
-                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8F8;"/>
-                                </Button>
-                            </RelativePanel>
-                        </StackPanel>
+                            </StackPanel>
+                            <Button x:Name="messageFriend_button"
+                                    Tag="{x:Bind username}"
+                                    Click="messageFriend_button_Click"
+                                Margin="0 0 0 0"
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                VerticalAlignment="Top"
+                                Background="#522B47"
+                                Foreground="White"
+                                HorizontalAlignment="Right">
+                                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BD;"/>
+                            </Button>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <TextBox></TextBox>
             </ListView>
             <StackPanel x:Name="noResults"
                         Margin="20"
@@ -128,7 +123,7 @@
                                 <Ellipse Height="100" Width="100" Margin="0 -5 0 0" 
                                      Grid.RowSpan="2">
                                     <Ellipse.Fill>
-                                        <ImageBrush ImageSource="../../Assets/samplepp.png" />
+                                        <ImageBrush ImageSource="../../Assets/comingsoon.png" />
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Text="{x:Bind username, Mode=OneWay}" 

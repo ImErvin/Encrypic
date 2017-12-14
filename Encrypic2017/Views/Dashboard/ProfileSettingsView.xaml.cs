@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -36,7 +37,16 @@ namespace Encrypic2017.Views.Dashboard
             Debug.WriteLine("hey");
             this.InitializeComponent();
             UVM = new UserViewModel();
-            UVM.getUserDetails();
+            setupPage();
+        }
+
+        private async void setupPage()
+        {
+            await UVM.getUserDetails();
+            if(UVM.profilePicture != "")
+            {
+                setImage(UVM.profilePicture);
+            }
         }
 
         private async void updateProfile_Button_Click(object sender, RoutedEventArgs e)
@@ -56,6 +66,25 @@ namespace Encrypic2017.Views.Dashboard
                 string msg = data["msg"].Value<string>();
                 errormessage.Text = msg;
                 errormessage.Visibility = Visibility.Visible;
+            }
+        }
+
+        private async void uploadPhoto_button_Click(object sender, RoutedEventArgs e)
+        {
+            string base64Image = await UVM.uploadImage();
+            UVM.profilePicture = base64Image;
+        }
+
+        private async void setImage(string base64Image)
+        {
+            byte[] data = Convert.FromBase64String(base64Image);
+            if (data.Count() > 1)
+            {
+                MemoryStream ms = new MemoryStream(data, 0, data.Length);
+                BitmapImage img = new BitmapImage();
+                var ras = ms.AsRandomAccessStream();
+                await img.SetSourceAsync(ras);
+                profilePictureImage.ImageSource = img;
             }
         }
     }

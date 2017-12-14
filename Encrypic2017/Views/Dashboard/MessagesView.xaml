@@ -7,10 +7,94 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center">
-            Messages View
-        </TextBlock>
+    <Grid>
+        <StackPanel x:Name="lockedMessage"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Visible">
+            <FontIcon Margin="10 10 10 10" FontSize="100" FontFamily="Segoe MDL2 Assets" Glyph="&#xE72E;"/>
+            <Button Margin="10 10 10 10"
+                        Background="#522B47"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        Content="Open Message?"
+                        x:Name="openMessage_button"
+                        Click="openMessage_button_Click"></Button>
+            <TextBlock HorizontalAlignment="Center">Opening this message will delete it.</TextBlock>
+            <HyperlinkButton HorizontalAlignment="Center"
+                             Click="HyperlinkButton_Click">Go back</HyperlinkButton>
+        </StackPanel>
+        <Grid>
+            <StackPanel x:Name="openedMessage"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                <Image Width="450" Height="400" Stretch="Fill" Source="../../Assets/background_images/bg4.jpg"/>
+                <CommandBar>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton Icon="Send" Label="Reply"/>
+                        <AppBarButton Icon="Back" Label="Close" x:Name="closePicture_button" Click="closePicture_button_Click"/>
+                    </CommandBar.SecondaryCommands>
+
+                    <CommandBar.Content>
+                        <TextBlock Text="From Username" Margin="12,14"/>
+                    </CommandBar.Content>
+                </CommandBar>
+            </StackPanel>
+        </Grid>
+        
+        <!--<StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <StackPanel>
+                <Button Margin="10 10 10 10"
+                        Background="#522B47"
+                        HorizontalAlignment="Right"
+                        Foreground="White"
+                        Content="Reply"
+                        x:Name="closeMessage_button"></Button>
+            </StackPanel>
+        </StackPanel>-->
+
+        <!--<StackPanel HorizontalAlignment="Stretch"
+                   VerticalAlignment="Bottom"
+                    Padding="10">
+            <Ellipse Width="100"
+                     Height="100"
+                     HorizontalAlignment="Left"
+                     Margin="20">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Width="100"
+                     Height="100"
+                     HorizontalAlignment="Right"
+                     Margin="20">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Width="100"
+                     Height="100"
+                     HorizontalAlignment="Left"
+                     Margin="20">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBox Margin="10 0 10 10"
+                Height="80">
+
+            </TextBox>
+            <Button Margin="10 0 10 10"
+                    Background="#522B47"
+                    HorizontalAlignment="Right"
+                    Foreground="White"
+                    Width="100"
+                    x:Name="sendMessage_button">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE724;"/>
+            </Button>
+        </StackPanel>-->
     </Grid>
 </Page>

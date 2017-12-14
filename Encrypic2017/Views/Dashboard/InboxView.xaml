@@ -8,19 +8,16 @@
     mc:Ignorable="d">
 
     <Grid>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="49"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
-            <AppBarToggleButton Icon="Add" Label="New Message" Foreground="Gray"/>
-        </CommandBar>-->
-
         <!-- Foreground element -->
-        <ListView x:Name="ForegroundElement" 
+        <ListView x:Name="MessagesList" 
                   Visibility="Visible"
                   HorizontalAlignment="Stretch"
                   Margin="50"
+                  IsItemClickEnabled="True"
+                  ItemClick="MessagesList_ItemClick" 
+                  SelectedItem="OnSelectedItem"
+                  SelectionMode="Single"
+                  SelectionChanged="MessagesList_SelectionChanged"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicElementMediumBrush }">
                 <ListView.ItemTemplate>
                     <DataTemplate>

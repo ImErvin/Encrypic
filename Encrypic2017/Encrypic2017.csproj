@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="Data\APIService.cs" />
     <Compile Include="Data\Authentication.cs" />
-    <Compile Include="Data\File.cs" />
     <Compile Include="Data\LocalStorageService.cs" />
     <Compile Include="Data\Message.cs" />
     <Compile Include="Data\Response.cs" />
@@ -106,10 +105,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FileViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\NotificationBase.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\Dashboard\CameraView.xaml.cs">
@@ -126,6 +125,9 @@
     </Compile>
     <Compile Include="Views\Dashboard\ProfileSettingsView.xaml.cs">
       <DependentUpon>ProfileSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\SendMessageView.xaml.cs">
+      <DependentUpon>SendMessageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\MasterAuthView.xaml.cs">
       <DependentUpon>MasterAuthView.xaml</DependentUpon>
@@ -166,6 +168,7 @@
     <Content Include="Assets\background_images\bg8.jpg" />
     <Content Include="Assets\background_images\bg9.jpg" />
     <Content Include="Assets\background_images\loginBg.png" />
+    <Content Include="Assets\comingsoon.png" />
     <Content Include="Assets\Fonts\Ubuntu-M.ttf" />
     <Content Include="Assets\Fonts\Ubuntu-R.ttf" />
     <None Include="Encrypic2017_TemporaryKey.pfx" />
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dashboard\ProfileSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dashboard\SendMessageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

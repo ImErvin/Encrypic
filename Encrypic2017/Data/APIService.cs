@@ -217,6 +217,40 @@ namespace Encrypic2017.Data
             }
         }
 
+        public virtual async Task<Response> postMessage(Message message)
+        {
+            HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true };
+            var content = new StringContent(JsonConvert.SerializeObject(message), Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient(handler))
+            {
+                ClientHeaderInfo(client);
+                try
+                {
+                    HttpResponseMessage result = await client.PostAsync(ServerUrl + "/userFriends", content);
+
+                    res.data = Convert.ToString(await result.Content.ReadAsStringAsync());
+                    res.status = Convert.ToString(result.StatusCode);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return res;
+                    }
+                    else
+                    {
+                        return res;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await new MessageDialog(ex.Message).ShowAsync();
+                    res.data = "{'msg':'There was an error connecting to backend - Try again later'}";
+                    res.status = "Internal Server Error";
+                    return res;
+                }
+            }
+        }
+
 
         public void saveToLocalStorage(string data)
         {

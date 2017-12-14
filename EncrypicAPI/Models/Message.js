@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const config = require('../Config/Database');
-const User = require('./User');
-const Attachment = require('./File');
 
 const MessageSchema = mongoose.Schema({
     messageFrom: {
@@ -26,3 +24,24 @@ const MessageSchema = mongoose.Schema({
 });
 
 const Message = module.exports = mongoose.model('Message', MessageSchema);
+
+module.exports.addMessage = function(newMessage, callback){
+    newMessage.save(callback);
+}
+
+module.exports.searchMessages = function(query, callback){
+    Message.find(query)
+    .exec(function(err, result) {
+        if (err) throw err;
+        callback(result);
+    });
+}
+
+module.exports.removeMessage = function(newMessage, callback){
+    Message.findOneAndRemove(newMessage.id)
+    .exec(function(err, result) {
+        if (err) throw err;
+        callback(result);
+    });
+}
+;

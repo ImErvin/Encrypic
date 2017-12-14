@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Encrypic2017.Views.Dashboard.SendMessageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Encrypic2017.Views.Dashboard"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel x:Name="openedMessage"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Visible">
+            <Image Width="450" Height="400" Stretch="Fill" Source="../../Assets/background_images/bg4.jpg"/>
+
+            <CommandBar>
+                <AppBarButton Icon="Upload" Label="Upload"></AppBarButton>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Icon="Send" Label="Send"/>
+                    <AppBarButton Icon="Back" Label="Close" x:Name="closePicture_button" Click="closePicture_button_Click"/>
+                </CommandBar.SecondaryCommands>
+
+                <CommandBar.Content>
+                    <TextBlock Text="To Username" Margin="12,14"/>
+                </CommandBar.Content>
+            </CommandBar>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -26,5 +26,21 @@ namespace Encrypic2017.Views.Dashboard
         {
             this.InitializeComponent();
         }
+
+        private void openMessage_button_Click(object sender, RoutedEventArgs e)
+        {
+            lockedMessage.Visibility = Visibility.Collapsed;
+            openedMessage.Visibility = Visibility.Visible;
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(InboxView));
+        }
+
+        private void closePicture_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(InboxView));
+        }
     }
 }

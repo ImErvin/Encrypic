@@ -19,6 +19,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./Routes/User');
+const messages = require('./Routes/Message');
 
 const port = 3000;
 
@@ -31,7 +32,9 @@ app.get('/', (req, res) => {
     res.send("Welcome to Encrypic");
 });
 
-app.use('/users', users);
+app.use(users);
+app.use(messages);
+app.use
 
 app.listen(port, () => {
     console.log('Server started on port ' + port);

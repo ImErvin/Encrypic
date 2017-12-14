@@ -18,14 +18,16 @@
                     >
             <Border BorderBrush="#522B47" 
                 BorderThickness="2"></Border>
-            <Button VerticalAlignment="Center"
+            <Button x:Name="uploadPhoto_button"
+                    VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Margin="10,10,10,10"
-                    Style="{StaticResource ButtonRevealStyle}">
+                    Style="{StaticResource ButtonRevealStyle}"
+                    Click="uploadPhoto_button_Click">
                 <Ellipse Width="200"
                          Height="200">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="../../Assets/samplepp.png" />
+                        <ImageBrush x:Name="profilePictureImage" ImageSource="../../Assets/samplepp.png"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </Button>
@@ -98,8 +100,7 @@
                         HorizontalAlignment="Right"
                         Background="#522B47"
                         Foreground="White"
-                        Content="Update Profile">
-                </Button>
+                        Content="Update Profile"/>
             </Grid>
         </StackPanel>
 

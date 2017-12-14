@@ -243,17 +243,19 @@ namespace Encrypic2017.ViewModels
             }
         }
 
-        public async void getUserDetails()
+        public async Task<bool> getUserDetails()
         {
             try
             {
                 string jsonString = await um.getFromLocalStorage();
                 convertToJsonUser(jsonString);
+                return true;
             }
             catch (Exception err)
             {
                 MessageDialog dialog = new MessageDialog(err.Message);
                 await dialog.ShowAsync();
+                return true;
             }
         }
 
