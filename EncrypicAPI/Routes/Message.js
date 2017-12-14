@@ -15,7 +15,7 @@ router.post('/postMessage', (req, res, next) => {
         fileAttachment: req.body.fileAttachment,
     });
 
-    Message.addMessage(newMessage, (err, user) => {
+    Message.addMessage(newMessage, (err, message) => {
         if (err) {
             res.status(500);
             res.json({ success: false, msg: 'Message failed to add' });
@@ -37,9 +37,7 @@ router.get('/getMessages', (req, res, next) => {
     });
 });
 
-router.post('/search', (req, res, next) => {
-    console.log(req.body);
-    
+router.post('/search', (req, res, next) => {    
     var query = {
         "messageTo": new RegExp(req.body.query)
     };
@@ -50,9 +48,9 @@ router.post('/search', (req, res, next) => {
     });
 });
 
-router.delete('/deleteMessage',(req, res, next) => {
-
-    Message.removeMessage(req.body.id, function (err, newMessage) {
+router.post('/deleteMessage',(req, res, next) => {
+    console.log("delete: " + req.body.messageId);
+    Message.removeMessage(req.body.messageId, function (err, message) {
         if (err) return res.send(err)
         res.status(200)
         return es.json({ success: true, msg: 'Message Removed' });

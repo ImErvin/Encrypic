@@ -1,6 +1,8 @@
-﻿using Encrypic2017.ViewModels;
+﻿using Encrypic2017.Data;
+using Encrypic2017.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,14 +38,21 @@ namespace Encrypic2017.Views.Dashboard
             await MVM.searchMessages();
         }
 
-        private void MessagesList_ItemClick(object sender, ItemClickEventArgs e)
+        //private void MessagesList_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    Debug.WriteLine("ITEM CLICK" + MessagesList.SelectedItem);
+        //    //this.Frame.Navigate(typeof(MessagesView), ((StackPanel)sender).Tag);
+        //}
+
+        private void MessagesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MessagesView), ((StackPanel)sender).Tag);
+            Debug.WriteLine("Selection CLICK" + MessagesList.SelectedItem);
+            this.Frame.Navigate(typeof(MessagesView), MessagesList.SelectedItem);
         }
 
-        private void openMessage_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(MessagesView), ((Button)sender).Tag);
-        }
+        //private void openMessage_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Frame.Navigate(typeof(MessagesView), ((Button)sender).Tag);
+        //}
     }
 }

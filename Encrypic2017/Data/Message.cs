@@ -14,6 +14,7 @@ namespace Encrypic2017.Data
         public string sentAt { get; set; }// Date and time of message creation
         public string secretkey { get; set; } // The secret key that encrypted the message
         public string fileAttachment { get; set; } // The image
+        public string messageId { get; set; }
 
         public Message()
         {

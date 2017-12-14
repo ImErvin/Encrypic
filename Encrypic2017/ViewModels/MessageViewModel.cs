@@ -54,7 +54,13 @@ namespace Encrypic2017.ViewModels
         public string fileAttachment
         {
             get { return This.fileAttachment; }
-            set { SetProperty(This.secretkey, value, () => This.fileAttachment = value); }
+            set { SetProperty(This.fileAttachment, value, () => This.fileAttachment = value); }
+        }
+
+        public string messageId
+        {
+            get { return This.messageId; }
+            set { SetProperty(This.messageId, value, () => This.messageId = value); }
         }
 
         public async Task<Response> sendMessage()
@@ -110,6 +116,13 @@ namespace Encrypic2017.ViewModels
             return res;
         }
 
+        public async Task<Response> deleteMessage(Message message)
+        {
+            res = await mm.deleteMessage(message);
+            
+            return res;
+        }
+
         public void convertJsonToMessages(JsonArray jsonData)
         {
             //searchResults = new ObservableCollection<User>();
@@ -130,6 +143,9 @@ namespace Encrypic2017.ViewModels
 
                     switch (key)
                     {
+                        case "_id":
+                            temp.messageId = value.GetString();
+                            break;
                         case "messageFrom": // based on generic object key
                             temp.messageFrom = value.GetString();
                             break;

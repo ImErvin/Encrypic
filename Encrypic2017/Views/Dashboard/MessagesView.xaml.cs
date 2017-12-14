@@ -28,6 +28,7 @@ namespace Encrypic2017.Views.Dashboard
     {
         MessageViewModel MVM;
         string base64;
+        string messageId;
         public MessagesView()
         {
             this.InitializeComponent();
@@ -38,14 +39,17 @@ namespace Encrypic2017.Views.Dashboard
         {
             base.OnNavigatedTo(e);
 
-            base64 = (string)e.Parameter;
-
-            Debug.WriteLine(base64);
+            Message m = (Message)e.Parameter;
+            base64 = m.fileAttachment;
+            messageId = m.messageId;
         }
 
-        private void openMessage_button_Click(object sender, RoutedEventArgs e)
+        private async void openMessage_button_Click(object sender, RoutedEventArgs e)
         {
             setImage(base64);
+            Message messageToDelete = new Message();
+            messageToDelete.messageId = messageId;
+            await MVM.deleteMessage(messageToDelete);
             lockedMessage.Visibility = Visibility.Collapsed;
             openedMessage.Visibility = Visibility.Visible;
         }

@@ -14,22 +14,22 @@
                   Visibility="Visible"
                   HorizontalAlignment="Stretch"
                   Margin="50"
-                  IsItemClickEnabled="False"
-                  ItemClick="MessagesList_ItemClick" 
+                  IsItemClickEnabled="True"
+                  SelectionMode="Single"
+                  SelectionChanged="MessagesList_SelectionChanged"
                   ItemsSource="{x:Bind MVM.searchResults}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="vm:Message">
                     <StackPanel Padding="20"
                                 Background="{ThemeResource SystemControlChromeMediumLowAcrylicElementMediumBrush }"
                                 Margin="10">
-                        <Button x:Name="openMessage"
-                                Click="openMessage_Click"
+                        <StackPanel x:Name="openMessage"
                                 HorizontalAlignment="Stretch"
                                 Tag="{x:Bind fileAttachment}"
                                 Margin="10"
                                 Background="#1f1f1f">
                             <FontIcon FontSize="125" FontFamily="Segoe MDL2 Assets" Foreground="#f1f1f1" Glyph="&#xEDB3;"/>
-                        </Button>
+                        </StackPanel>
                         <TextBlock Text="From"/>
                         <TextBlock Text="{x:Bind messageFrom}" 
                                    Grid.Column="1"

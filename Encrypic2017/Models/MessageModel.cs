@@ -20,5 +20,10 @@ namespace Encrypic2017.Models
         {
             return await apiService.searchMessage(query);
         }
+        
+        public async Task<Response> deleteMessage(Message message)
+        {
+            return await apiService.deleteMessage(message);
+        }
     }
 }
