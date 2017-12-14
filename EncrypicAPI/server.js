@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./Config/Database');
 
@@ -21,7 +20,7 @@ const app = express();
 const users = require('./Routes/User');
 const messages = require('./Routes/Message');
 
-const port = 3000;
+const port = process.env.PORT || 8080;;
 
 app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));

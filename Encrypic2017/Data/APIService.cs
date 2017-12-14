@@ -12,14 +12,16 @@ namespace Encrypic2017.Data
 {
     class APIService
     {
-
+        // Default Consstructor
         public APIService()
         {
 
         }
 
+        // Create the client
         private static readonly HttpClient client = new HttpClient();
 
+        // Set the serverUrl
         const string ServerUrl = "http://127.0.0.1:3000/"; //specify your server url
 
         public Response res = new Response();

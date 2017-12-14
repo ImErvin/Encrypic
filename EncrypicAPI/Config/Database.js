@@ -1,4 +1,4 @@
 module.exports = {
-    database: 'mongodb://localhost:27017/test',
+    database: process.env.MONGODB_URI+"/encrypic",
     secret: 'encrypic'
 }
