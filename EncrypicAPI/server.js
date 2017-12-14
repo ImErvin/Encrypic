@@ -23,7 +23,8 @@ const users = require('./Routes/User');
 const port = 3000;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 //index route, send responce as there is nothing there
 app.get('/', (req, res) => {

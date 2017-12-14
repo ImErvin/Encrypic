@@ -36,10 +36,8 @@ router.post('/postUser', (req, res, next) => {
             profilePicture: req.body.profilePicture
         });
 
-        console.log(req.body.profilePicture);
         User.addUser(newUser, (err, user) => {
             if (err) {
-                console.log(err);
                 res.status(500);
                 res.json({ success: false, msg: 'Registration Error' });
             } else {
@@ -62,7 +60,6 @@ router.put('/putUser', (req, res, next) => {
             return res.json({ success: false, msg: 'Username does not exists' });
         }
 
-        console.log(req.body);
 
         
         user.firstName= req.body.firstName || user.firstname,
@@ -125,7 +122,6 @@ router.post('/authenticate', (req, res, next) => {
             res.status(404);
             return res.json({ success: false, msg: 'Username not found' });
         }
-        console.log(user);
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
 
@@ -154,7 +150,6 @@ router.post('/authenticate', (req, res, next) => {
 
 router.post('/search', (req, res, next) => {
 
-    console.log(req.body);
     var query = {
         "username": new RegExp(req.body.query)
     };
@@ -168,7 +163,6 @@ router.post('/search', (req, res, next) => {
 
 router.post('/userFriends',  (req, res, next) => {
 
-        console.log(req.body);
         
         var query = {
             "username": new RegExp(req.body.query+")")

@@ -20,19 +20,8 @@ const MessageSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    fileAttached: {
-        type: Boolean,
-        required: true
-    },
     fileAttachment: {
         type: String
-    },
-    encryptedMessage: {
-        type: String,
-        required: true
-    },
-    expireAt: {
-        type: String,
     }
 });
 
