@@ -22,7 +22,7 @@ namespace Encrypic2017.Data
         private static readonly HttpClient client = new HttpClient();
 
         // Set the serverUrl
-        const string ServerUrl = "http://127.0.0.1:3000/"; //specify your server url
+        const string ServerUrl = "https://encrypicapi.herokuapp.com/"; //specify your server url
 
         public Response res = new Response();
 

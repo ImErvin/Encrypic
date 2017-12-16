@@ -35,7 +35,15 @@ namespace Encrypic2017.Views.Dashboard
 
         private async void loadMessages()
         {
-            await MVM.searchMessages();
+            try
+            {
+                await MVM.searchMessages();
+            }
+            catch
+            {
+                Debug.WriteLine("Error loading messages");
+            }
+            
         }
 
         //private void MessagesList_ItemClick(object sender, ItemClickEventArgs e)
