@@ -37,7 +37,19 @@ namespace Encrypic2017.Views.Dashboard
 
         private async void loadFriends()
         {
-            await UVM.getUserFriends();
+            Response res = await UVM.getUserFriends();
+            if (res.status == "OK")
+            {
+                if (UVM.friendsList.Count() == 0)
+                {
+                    noFriends.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    noFriends.Visibility = Visibility.Collapsed;
+                }
+
+            }
         }
 
         private async void searchUsers_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
@@ -53,6 +65,7 @@ namespace Encrypic2017.Views.Dashboard
                     searchResults.Visibility = Visibility.Collapsed;
                     friendsList.Visibility = Visibility.Collapsed;
                     closeSearch_button.Visibility = Visibility.Visible;
+                    noFriends.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
@@ -60,6 +73,7 @@ namespace Encrypic2017.Views.Dashboard
                     searchResults.Visibility = Visibility.Visible;
                     friendsList.Visibility = Visibility.Collapsed;
                     closeSearch_button.Visibility = Visibility.Visible;
+                    noFriends.Visibility = Visibility.Collapsed;
                 }
                 
             }
@@ -77,6 +91,7 @@ namespace Encrypic2017.Views.Dashboard
             friendsList.Visibility = Visibility.Collapsed;
             closeSearch_button.Visibility = Visibility.Visible;
             searchResults.Visibility = Visibility.Collapsed;
+            noFriends.Visibility = Visibility.Collapsed;
         }
 
         private void closeSearch_button_Click(object sender, RoutedEventArgs e)

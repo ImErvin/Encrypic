@@ -32,69 +32,10 @@
                 <Image x:Name="sentImage" Width="450" Height="400" Stretch="Fill"/>
                 <CommandBar>
                     <CommandBar.SecondaryCommands>
-                        <AppBarButton Icon="Send" Label="Reply"/>
                         <AppBarButton Icon="Back" Label="Close" x:Name="closePicture_button" Click="closePicture_button_Click"/>
                     </CommandBar.SecondaryCommands>
-
-                    <CommandBar.Content>
-                        <TextBlock Text="From Username" Margin="12,14"/>
-                    </CommandBar.Content>
                 </CommandBar>
             </StackPanel>
         </Grid>
-        
-        <!--<StackPanel HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-            <StackPanel>
-                <Button Margin="10 10 10 10"
-                        Background="#522B47"
-                        HorizontalAlignment="Right"
-                        Foreground="White"
-                        Content="Reply"
-                        x:Name="closeMessage_button"></Button>
-            </StackPanel>
-        </StackPanel>-->
-
-        <!--<StackPanel HorizontalAlignment="Stretch"
-                   VerticalAlignment="Bottom"
-                    Padding="10">
-            <Ellipse Width="100"
-                     Height="100"
-                     HorizontalAlignment="Left"
-                     Margin="20">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Width="100"
-                     Height="100"
-                     HorizontalAlignment="Right"
-                     Margin="20">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Width="100"
-                     Height="100"
-                     HorizontalAlignment="Left"
-                     Margin="20">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="../../Assets/samplepp.png" />
-                </Ellipse.Fill>
-            </Ellipse>
-            <TextBox Margin="10 0 10 10"
-                Height="80">
-
-            </TextBox>
-            <Button Margin="10 0 10 10"
-                    Background="#522B47"
-                    HorizontalAlignment="Right"
-                    Foreground="White"
-                    Width="100"
-                    x:Name="sendMessage_button">
-                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE724;"/>
-            </Button>
-        </StackPanel>-->
     </Grid>
 </Page>

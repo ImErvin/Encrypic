@@ -73,6 +73,14 @@ namespace Encrypic2017.Views.Dashboard
         {
             string base64Image = await UVM.uploadImage();
             UVM.profilePicture = base64Image;
+            try
+            {
+                setImage(base64Image);
+            }
+            catch
+            {
+                Debug.WriteLine("Can't upload picture");
+            }
         }
 
         private async void setImage(string base64Image)

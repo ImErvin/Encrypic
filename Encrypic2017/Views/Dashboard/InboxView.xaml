@@ -9,6 +9,19 @@
     mc:Ignorable="d">
 
     <Grid>
+        <StackPanel x:Name="noMessages"
+                    Margin="20"
+                    Visibility="Visible">
+            <StackPanel Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+                <TextBlock Foreground="#1f1f1f" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10"
+                       Text="No Messages."
+                       HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        
         <!-- Foreground element -->
         <GridView x:Name="MessagesList" 
                   Visibility="Visible"

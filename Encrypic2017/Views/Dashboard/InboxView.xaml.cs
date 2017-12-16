@@ -37,7 +37,19 @@ namespace Encrypic2017.Views.Dashboard
         {
             try
             {
-                await MVM.searchMessages();
+                Response res = await MVM.searchMessages();
+                if (res.status == "OK")
+                {
+                    if (MVM.searchResults.Count() == 0)
+                    {
+                        noMessages.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        noMessages.Visibility = Visibility.Collapsed;
+                    }
+
+                }
             }
             catch
             {
@@ -46,21 +58,10 @@ namespace Encrypic2017.Views.Dashboard
             
         }
 
-        //private void MessagesList_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    Debug.WriteLine("ITEM CLICK" + MessagesList.SelectedItem);
-        //    //this.Frame.Navigate(typeof(MessagesView), ((StackPanel)sender).Tag);
-        //}
-
         private void MessagesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine("Selection CLICK" + MessagesList.SelectedItem);
             this.Frame.Navigate(typeof(MessagesView), MessagesList.SelectedItem);
         }
-
-        //private void openMessage_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Frame.Navigate(typeof(MessagesView), ((Button)sender).Tag);
-        //}
     }
 }

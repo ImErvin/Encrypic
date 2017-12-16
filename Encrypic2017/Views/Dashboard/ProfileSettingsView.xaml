@@ -87,11 +87,10 @@
                            Grid.Column="0"
                            Margin="10 15 10 10"
                            Text="Password:"/>
-                <PasswordBox Grid.Column="1"
-                             Grid.Row="3"
-                             Margin="10 10 10 10" 
-                             PlaceholderText="*******"
-                             Password="{x:Bind UVM.password, Mode=TwoWay}"/>
+                <TextBlock Grid.Row="3"
+                           Grid.Column="1"
+                           Margin="10 15 10 10"
+                           Text="Coming Soon"/>
                 <Button x:Name="updateProfile_Button"
                         Click="updateProfile_Button_Click"
                         Grid.Row="4"

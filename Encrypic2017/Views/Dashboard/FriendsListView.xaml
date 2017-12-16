@@ -27,6 +27,17 @@
                     Visibility="Collapsed">
                 <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE89F;"/>
             </Button>
+            <StackPanel x:Name="noFriends"
+                        Margin="20"
+                        Visibility="Collapsed"
+                        Background="{ThemeResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+                <TextBlock Foreground="#1f1f1f" 
+                       FontFamily="Segoe UI Light" 
+                       FontSize="15"
+                       Margin="10"
+                       Text="Use the search bar to find new friends."
+                       HorizontalAlignment="Center"/>
+            </StackPanel>
             <ListView x:Name="friendsList"
                       ItemsSource="{x:Bind UVM.searchResults}"
                       HorizontalAlignment="Stretch"
@@ -86,7 +97,6 @@
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <TextBox></TextBox>
             </ListView>
             <StackPanel x:Name="noResults"
                         Margin="20"
