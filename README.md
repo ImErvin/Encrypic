@@ -27,6 +27,7 @@ To run this application you must ensure you are using Visual Studio **2017** and
 2. On one of the CLI windows run the command *"mongod"*
 3. On the other CLI window navigate to the EncrypicAPI folder and run the command *"node install"*
 4. Once that is finished installing, run the command *"node server.js"* to start the API.
+5. Change the variable serverurl in APIService.cs to localhost instead of the heroku url.
 
 
 ### Windows Store
